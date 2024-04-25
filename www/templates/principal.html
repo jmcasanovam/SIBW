@@ -4,6 +4,9 @@
 {{ parent() }} : Principal
 {% endblock %} 
 
+{% block importaciones %}
+{{ parent() }}
+{% endblock %}
 
 {% block contenido %}
 <!-- Contenedor para navegar entre las actividades disponibles. -->

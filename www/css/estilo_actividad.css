@@ -156,11 +156,12 @@
 .descripcion-actividad {
     padding: 1%;
     margin: 1%;
-    flex: 1;
+    /* flex: 1; */
     text-align: justify;
     font-size: 100%;
     color: black;
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    width: 90%;
 }
 
 .descripcion-actividad h2 {
@@ -329,8 +330,8 @@
     padding: 1%;
     display: block;
     text-align: center;
-    width: 55%;
-    height: 5%;
+    width: 75%;
+    height: 15%;
     border-radius: 10px;
 
 
