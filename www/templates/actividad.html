@@ -12,15 +12,10 @@
 {% block contenido %}
     <!-- Elemento principal de la página web. Contenido de la actividad -->
     <article class="descripcion-actividad">
-        <h2>Escalada </h2>
-        <h4>Fecha de realización: 03/06/2024</h4>
-        <h5>Por sólo 59.99€</h5>
-        <p class="formato-texto">La escalada es una actividad deportiva que consiste en subir por paredes de roca,
-            montañas o estructuras artificiales. Se puede practicar en interiores o exteriores. La escalada en roca se realiza en paredes
-            naturales, mientras que la escalada en hielo se realiza en cascadas de hielo. La escalada en bloque se
-            realiza en bloques de roca de pequeño tamaño. La escalada deportiva se realiza en paredes artificiales y
-            la escalada en solitario se realiza sin compañero de cuerda. La escalada en grandes paredes se realiza
-            en paredes de gran altura y la escalada en psicobloc se realiza sobre el agua.</p>
+        <h2>{{ nombre }} </h2>
+        <h4>Fecha de realización: {{ fecha }}</h4>
+        <h5>Por sólo {{ precio }}</h5>
+        <p class="formato-texto">{{ contenido }}</p>
 
 
         <!-- para marcar la foto en el documento, agrupar y etiquetar el contenido multimedia -->
