@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>{%block titulo %}🏔️Ay que me caigo{% endblock %}</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="css/estilo.css" type="text/css">
+    {% block importaciones %}
+    {% endblock %}
+
+
+</head>
+
+<body>
+    <header class="cabecera">
+        <img id="logo" src="img/logo.png">
+        <div>
+            <div class="nombre_pag">
+                <h1 id="titulo">
+                    Ay que me caigo
+                </h1>
+            </div>
+
+            <!-- Menú horizontal -->
+            <nav class="menu-desplegable">
+                <div class="dropdown">
+                    <button class="boton-menu">Menú 1</button>
+                    <div class="dropdown-content">
+                        <a href="principal.html">Inicio</a>
+                        <a href="actividad.html">Actividad</a>
+                        <a href="#foot">Contacto</a>
+                    </div>
+                </div>
+                <div class="dropdown">
+                    <button class="boton-menu">Menú 2</button>
+                    <div class="dropdown-content">
+                        <a href="principal.html">Inicio</a>
+                        <a href="actividad.html">Actividad</a>
+                        <a href="#foot">Contacto</a>
+                    </div>
+                </div>
+                <div class="dropdown">
+                    <button class="boton-menu">Menú 3</button>
+                    <div class="dropdown-content">
+                        <a href="principal.html">Inicio</a>
+                        <a href="actividad.html">Actividad</a>
+                        <a href="#foot">Contacto</a>
+                    </div>
+                </div>
+            </nav>
+        </div>
+
+    </header>
+
+    <!-- Parte principal de la página web -->
+    <main class="cuerpo">
+        <!-- Elemento a parte, que está separado del contenido principal de la página web, pero que está relacionado con él. -->
+        <aside class="elementos_auxiliares">
+            <h2>Enlaces que podrían interesarte</h2>
+            <nav>
+                <ul>
+                    <li><a href="https://medac.es/blogs/deporte/principales-tipos-de-escalada" target="_blank">¿Cuáles
+                            son los principales tipos
+                            de escalada?</a></li>
+                    <li><a href="https://www.iloveski.org/es/2022/04/19/que-es-el-esqui/" target="_blank">¿Qué es el
+                            esqui?</a></li>
+                    <li><a href="https://fedme.es/senderismo/" target="_blank">¿Qué es el senderismo de montaña?</a>
+                    </li>
+                    <li><a href="https://bextremeboards.com/blog/que-es-el-snowboard/" target="_blank">¿Qué es el
+                            snowboard?</a></li>
+                    <li><a href="https://alua.es/que-es-el-rafting/" target="_blank">¿Qué es el rafting?</a></li>
+                    <li><a href="https://www.ekoi.es/es/blog/que-es-el-ciclismo-de-montana-de-descenso"
+                            target="_blank">¿Qué es el ciclismo de montaña de descenso?</a></li>
+                    <li><a href="https://www.skynorte.com/que-es-parapente/" target="_blank">¿Qué es el parapente?</a>
+                    </li>
+                    <li><a href="https://es.kampaoh.com/blog/vacaciones-y-escapadas/acampar-bajo-las-estrellas-escapadas-de-camping-y-astronomia-para-la-observacion-del-cielo-nocturno/"
+                            target="_blank">Astronomía acampando</a></li>
+                    <li><a href="https://es.wikipedia.org/wiki/Observaci%C3%B3n_de_aves" target="_blank">¿Qué es el
+                            avistamiento de aves?</a></li>
+                </ul>
+            </nav>
+        </aside>
+
+        {% block contenido %}
+
+        {% endblock %}
+    </main>
+
+    <footer class="pie_pagina" id="foot">
+        <p>
+            © 2024 - José Manuel Casanova Martínez
+        </p>
+        <p>Correo de contacto: micorreo@gmail.com</p>
+    </footer>
+
+</body>
+
+</html>

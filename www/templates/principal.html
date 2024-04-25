@@ -1,0 +1,117 @@
+{% extends "padre.html" %}
+
+{% block titulo %}
+{{ parent() }} : Principal
+{% endblock %} 
+
+
+{% block contenido %}
+<!-- Contenedor para navegar entre las actividades disponibles. -->
+<nav class="actividades_disponibles">
+    <h2>Actividades de montaña disponibles</h2>
+
+    <div class="view-content">
+
+        <!-- Escalada -->
+        <div class="actividad">
+            <a href="actividad.html">
+                <p class="titulo-actividad">Escalada</p>
+
+                <div class="imagen-actividad">
+                    <img src="./img/escalada.jpg">
+                </div>
+            </a>
+        </div>
+
+        <!-- Esqui -->
+        <div class="actividad">
+            <a href="actividad.html">
+                <p class="titulo-actividad">Esqui</p>
+
+                <div class="imagen-actividad">
+                    <img src="./img/esqui.jpg">
+                </div>
+            </a>
+        </div>
+
+        <!-- Senderismo -->
+        <div class="actividad">
+            <a href="actividad.html">
+                <p class="titulo-actividad">Senderismo</p>
+
+                <div class="imagen-actividad">
+                    <img src="./img/senderismo.jpg">
+                </div>
+            </a>
+        </div>
+
+        <!-- Snowboard -->
+        <div class="actividad">
+            <a href="actividad.html">
+                <p class="titulo-actividad">Snowboard</p>
+
+                <div class="imagen-actividad">
+                    <img src="./img/snowboard.jpg">
+                </div>
+            </a>
+        </div>
+
+        <!-- Rafting -->
+        <div class="actividad">
+            <a href="actividad.html">
+                <p class="titulo-actividad">Rafting en aguas bravas</p>
+
+                <div class="imagen-actividad">
+                    <img src="./img/rafting.jpg">
+                </div>
+            </a>
+        </div>
+
+        <!-- Descenso en bicicleta de montaña -->
+        <div class="actividad">
+            <a href="actividad.html">
+                <p class="titulo-actividad">Descenso en bicicleta de montaña</p>
+
+                <div class="imagen-actividad">
+                    <img src="./img/descenso.jpg">
+                </div>
+            </a>
+        </div>
+
+        <!-- Parapente -->
+        <div class="actividad">
+            <a href="actividad.html">
+                <p class="titulo-actividad">Parapente</p>
+
+                <div class="imagen-actividad">
+                    <img src="./img/parapente.jpg">
+                </div>
+            </a>
+        </div>
+
+        <!-- Camping y noche de estrellas -->
+        <div class="actividad">
+            <a href="actividad.html">
+                <p class="titulo-actividad">Camping y noche de estrellas</p>
+
+                <div class="imagen-actividad">
+                    <img src="./img/camping.jpg">
+                </div>
+            </a>
+        </div>
+
+        <!-- Avistamiento de aves -->
+        <div class="actividad">
+            <a href="actividad.html">
+                <p class="titulo-actividad">Avistamiento de aves</p>
+
+                <div class="imagen-actividad">
+                    <img src="./img/aves.jpg" alt="Escalada">
+                </div>
+            </a>
+        </div>
+
+    </div>
+</nav>
+
+{% endblock %}
