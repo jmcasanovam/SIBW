@@ -13,7 +13,7 @@ class Database {
 
     // Método para obtener un evento por su ID
     public function getEvento($idEv) {
-        $query = "SELECT nombre, lugar FROM eventos WHERE id = ?";
+        $query = "SELECT nombre, lugar FROM eventos WHERE id = ?";// El ? es un parámetro que se sustituirá por el valor de $idEv más adelante
         $statement = $this->mysqli->prepare($query);
         $statement->bind_param("i", $idEv);
         $statement->execute();
