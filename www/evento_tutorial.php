@@ -3,21 +3,18 @@
   include 'bd.php';
   
 
-  $loader = new \Twig\Loader\FilesystemLoader('templates');
-  $twig = new \Twig\Environment($loader);
-  
-  
+  // $loader = new \Twig\Loader\FilesystemLoader('templates');
+  // $twig = new \Twig\Environment($loader);
   
   if (isset($_GET['ev'])){
     $idEv = $_GET['ev'];
   }else{
     $idEv = -1;
   }
-  
-  $evento = getEvento($idEv);
+  $dataBase = new Database();
+  $evento = $dataBase->getEvento($idEv);
 
-  
-  
-  
-  echo $twig->render('evento.html', ['evento' => $evento]);
+  echo "<h1>Nombre: ".$evento['nombre']."</h1>";
+
+  // echo $twig->render('evento.html', ['evento' => $evento]);
 ?>
