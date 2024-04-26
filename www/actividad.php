@@ -166,18 +166,34 @@
     return $argumentos;
   }
   
-  // if ($_GET['ev'] == 1) {
-  //   $nombreEvento = "Evento 1";
-  //   $fechaEvento = "Miércoles";
-  // } else if ($_GET['ev'] == 2) {
-  //   $nombreEvento = "Evento 2";
-  //   $fechaEvento = "Jueves";    
-  // }
+  $argumentos = [];
   
   
+  if (isset($_GET['ev'])) {
+    if ($_GET['ev'] == 1) {
+    $argumentos = rellenarEscalada();
+    } else if ($_GET['ev'] == 2) {
+      $argumentos = rellenarEsqui();
+    } else if ($_GET['ev'] == 3) {
+      $argumentos = rellenarSenderismo();
+    } else if ($_GET['ev'] == 4) {
+      $argumentos = rellenarSnowboard();
+    } else if ($_GET['ev'] == 5) {
+      $argumentos = rellenarRafting();
+    } else if ($_GET['ev'] == 6) {
+      $argumentos = rellenarDescensoBici();
+    } else if ($_GET['ev'] == 7) {
+      $argumentos = rellenarParapente();
+    } else if ($_GET['ev'] == 8) {
+      $argumentos = rellenarCamping();
+    } else if ($_GET['ev'] == 9) {
+      $argumentos = rellenarAvistamientoAves();
+    } else {
+      $argumentos = rellenarEscalada();       
+    }
+  } else {
+    $argumentos = rellenarEscalada();
+  }
   
-  // echo $twig->render('evento.html', ['nombre' => $nombreEvento, 'fecha' => $fechaEvento]);
-
-  $argumentos = rellenarActividad2();
   echo $twig->render('actividad.html', $argumentos);
 ?>
