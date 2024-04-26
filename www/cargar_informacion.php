@@ -21,6 +21,8 @@
     $argumentos['edad_minima'] = "12 años";
     $argumentos['enlaces'] = ["https://www.pasoclave.com/tipos-escalada-diferencias-estilos-materiales/", "https://www.barrabes.com/blog/consejos/2-10965/indispensables-escalada-deportiva-material-obligatorio"];
 
+    $argumentos['imprimir'] = "imprimir.php?ev=1";
+
     return $argumentos;
   }
 
@@ -40,6 +42,8 @@
     $argumentos['duracion'] = "4 horas";
     $argumentos['edad_minima'] = "10 años";
     $argumentos['enlaces'] = ["https://www.esqui.com/blog/material-esqui/", "https://www.nevasport.com/material-esqui/"];
+
+    $argumentos['imprimir'] = "imprimir.php?ev=2";
 
     return $argumentos;
   }
@@ -61,6 +65,8 @@
     $argumentos['edad_minima'] = "8 años";
     $argumentos['enlaces'] = ["https://www.senderismo.net/material-senderismo/", "https://www.senderosyveredas.com/que-llevar-para-hacer-senderismo/"];
 
+    $argumentos['imprimir'] = "imprimir.php?ev=3";
+
     return $argumentos;
   }
 
@@ -80,6 +86,9 @@
     $argumentos['duracion'] = "4 horas";
     $argumentos['edad_minima'] = "10 años";
     $argumentos['enlaces'] = ["https://www.snowboard.es/material-snowboard/", "https://www.nevasport.com/material-snowboard/"];
+
+    $argumentos['imprimir'] = "imprimir.php?ev=4";
+
 
     return $argumentos;
   }
@@ -101,6 +110,9 @@
     $argumentos['edad_minima'] = "12 años";
     $argumentos['enlaces'] = ["https://www.rafting.es/material-para-rafting/", "https://www.rafting.es/consejos-para-principiantes-en-rafting/"];
 
+    $argumentos['imprimir'] = "imprimir.php?ev=5";
+
+
     return $argumentos;
   }
 
@@ -120,6 +132,9 @@
     $argumentos['duracion'] = "4 horas";
     $argumentos['edad_minima'] = "14 años";
     $argumentos['enlaces'] = ["https://www.bicicletas.com/material-descenso-bici/", "https://www.bicicletas.com/consejos-descenso-bici/"];
+
+    $argumentos['imprimir'] = "imprimir.php?ev=6";
+
 
     return $argumentos;
   }
@@ -141,6 +156,9 @@
     $argumentos['edad_minima'] = "16 años";
     $argumentos['enlaces'] = ["https://www.parapente.com/material-parapente/", "https://www.parapente.com/consejos-parapente/"];
 
+    $argumentos['imprimir'] = "imprimir.php?ev=7";
+
+
     return $argumentos;
   }
 
@@ -161,6 +179,8 @@
     $argumentos['edad_minima'] = "6 años";
     $argumentos['enlaces'] = ["https://www.camping.es/material-camping/", "https://www.camping.es/consejos-camping/"];
 
+    $argumentos['imprimir'] = "imprimir.php?ev=8";
+    
     return $argumentos;
   }
 
@@ -180,6 +200,9 @@
     $argumentos['duracion'] = "1 día";
     $argumentos['edad_minima'] = "6 años";
     $argumentos['enlaces'] = ["https://www.aves.net/material-avistamiento-aves/", "https://www.aves.net/consejos-avistamiento-aves/"];
+
+    $argumentos['imprimir'] = "imprimir.php?ev=9";
+
 
     return $argumentos;
   }
