@@ -21,11 +21,11 @@
         <!-- para marcar la foto en el documento, agrupar y etiquetar el contenido multimedia -->
         <figure class="contenedor-dos-imagenes">
             <div class="contenedor-columna">
-                <img src="img/escalada.jpg" alt="Escalada" class="imagen-escalada">
+                <img src={{ imagen1 }} alt="Escalada" class="imagen-escalada">
                 <figcaption class="formato-texto centrar-texto">Escalador profesional</figcaption>
             </div>
             <div class="contenedor-columna">
-                <img src="img/escalada2.jpg" alt="Escalada" class="imagen-escalada">
+                <img src={{ imagen2 }} alt="Escalada" class="imagen-escalada">
                 <figcaption class="formato-texto centrar-texto">Prácticas de escalada</figcaption>
             </div>
 
@@ -36,39 +36,30 @@
             Material necesario:
         </p>
         <ul>
-            <li class="formato-texto">Ropa cómoda</li>
-            <li class="formato-texto">Zapatillas de escalada</li>
-            <li class="formato-texto">Cuerda</li>
-            <li class="formato-texto">Arnes</li>
-            <li class="formato-texto">Descensor</li>
-            <li class="formato-texto">8 cintas exprés</li>
-            <li class="formato-texto">2 mosquetones de seguridad</li>
-            <li class="formato-texto">2 cordinos</li>
-            <li class="formato-texto">1 casco</li>
-            <li class="formato-texto">1 magnesio</li>
+            {% for material in materiales %}
+            <li class="formato-texto">{{ material }}</li>
+            {% endfor %}
+
         </ul>
 
         <p class="formato-texto">
-            Nivel de dificultad: 3/5
+            Nivel de dificultad: {{ dificultad }}
         </p>
 
         <p class="formato-texto">
-            Duración: 4 horas
+            Duración: {{ duracion }}
         </p>
 
         <p class="formato-texto">
-            Edad mínima: 12 años
+            Edad mínima: {{ edad_minima }}
         </p>
 
         <p class="formato-texto">Enlaces a otras páginas que deberías ver: </p>
 
         <ul>
-            <li class="formato-texto"><a
-                    href="https://www.pasoclave.com/tipos-escalada-diferencias-estilos-materiales/" target="_blank"
-                    class="enlace-basico">Tipos de escalada.</a></li>
-            <li class="formato-texto"><a
-                    href="https://www.barrabes.com/blog/consejos/2-10965/indispensables-escalada-deportiva-material-obligatorio"
-                    target="_blank" class="enlace-basico">Material indispensable para la escalada.</a></li>
+            {% for enlace in enlaces %}
+            <li class="formato-texto"><a href={{ enlace }} target="_blank" class="enlace-basico">{{ enlace }}</a></li>
+            {% endfor %}
         </ul>
 
         <nav class="iconos">

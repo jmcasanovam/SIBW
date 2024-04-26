@@ -24,7 +24,14 @@
   $argumentos['fecha'] = "03/06/2024";
   $argumentos['precio'] = "59.99€";
   $argumentos['contenido'] = "La escalada es una actividad deportiva que consiste en subir por paredes de roca, montañas o estructuras artificiales. Se puede practicar en interiores o exteriores. La escalada en roca se realiza en paredes naturales, mientras que la escalada en hielo se realiza en cascadas de hielo. La escalada en bloque se realiza en bloques de roca de pequeño tamaño. La escalada deportiva se realiza en paredes artificiales y la escalada en solitario se realiza sin compañero de cuerda. La escalada en grandes paredes se realiza en paredes de gran altura y la escalada en psicobloc se realiza sobre el agua.";
-  // $argumentos['imagen1'] = "img/escalada.jpg";
-  // $argumentos['imagen2'] = "img/escalada2.jpg";
+  $argumentos['imagen1'] = "img/escalada.jpg";
+  $argumentos['imagen2'] = "img/escalada2.jpg";
+
+  $argumentos['materiales'] = ["Ropa cómoda", "Zapatillas de escalada", "Cuerda", "Arnes", "Descensor", "8 cintas exprés", "2 mosquetones de seguridad", "2 cordinos", "Casco", "Magnesio"];
+  $argumentos['dificultad'] = "3/5";
+  $argumentos['duracion'] = "3 horas";
+  $argumentos['edad_minima'] = "12 años";
+  $argumentos['enlaces'] = ["https://www.pasoclave.com/tipos-escalada-diferencias-estilos-materiales/", "https://www.barrabes.com/blog/consejos/2-10965/indispensables-escalada-deportiva-material-obligatorio"];
+
   echo $twig->render('actividad.html', $argumentos);
 ?>
