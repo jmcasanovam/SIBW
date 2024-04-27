@@ -7,7 +7,7 @@
   function rellenarEscalada(){
     $argumentos = [];
     $argumentos['nombre'] = "Escalada";
-    $argumentos['fecha'] = "03/06/2024";
+    $argumentos['fecha'] = "2024-06-03";
     $argumentos['precio'] = "59.99€";
     $argumentos['contenido'] = "La escalada es una actividad deportiva que consiste en subir por paredes de roca, montañas o estructuras artificiales. Se puede practicar en interiores o exteriores. La escalada en roca se realiza en paredes naturales, mientras que la escalada en hielo se realiza en cascadas de hielo. La escalada en bloque se realiza en bloques de roca de pequeño tamaño. La escalada deportiva se realiza en paredes artificiales y la escalada en solitario se realiza sin compañero de cuerda. La escalada en grandes paredes se realiza en paredes de gran altura y la escalada en psicobloc se realiza sobre el agua.";
     $argumentos['imagen1'] = "img/escalada.jpg";
@@ -29,7 +29,7 @@
   function rellenarEsqui(){
     $argumentos = [];
     $argumentos['nombre'] = "Esqui";
-    $argumentos['fecha'] = "04/06/2024";
+    $argumentos['fecha'] = "2024-06-04";
     $argumentos['precio'] = "79.99€";
     $argumentos['contenido'] = "El esquí es un deporte de invierno que consiste en deslizarse sobre la nieve utilizando esquís. Se puede practicar en diferentes modalidades como el esquí alpino, el esquí de fondo, el esquí de travesía y el esquí acrobático. El esquí alpino se realiza en pistas preparadas y se caracteriza por descensos rápidos y giros pronunciados. El esquí de fondo se practica en terrenos planos y ondulados, y es una actividad de resistencia. El esquí de travesía implica ascender y descender montañas utilizando esquís y puede ser una experiencia de aventura. El esquí acrobático incluye saltos y trucos en el aire. Para practicar esquí se necesitan equipos como esquís, botas, bastones y ropa adecuada. Es un deporte emocionante y divertido que puede ser disfrutado por personas de todas las edades.";
     $argumentos['imagen1'] = "img/esqui.jpg";
@@ -51,7 +51,7 @@
   function rellenarSenderismo(){
     $argumentos = [];
     $argumentos['nombre'] = "Senderismo";
-    $argumentos['fecha'] = "05/06/2024";
+    $argumentos['fecha'] = "2024-06-05";
     $argumentos['precio'] = "39.99€";
     $argumentos['contenido'] = "El senderismo es una actividad al aire libre que consiste en caminar por senderos y rutas en la naturaleza. Se puede practicar en montañas, bosques, valles, costas y otros entornos naturales. El senderismo es una actividad relajante y saludable que permite disfrutar de la naturaleza y el aire libre. Para practicar senderismo se necesitan equipos como calzado cómodo, ropa adecuada, mochila, bastones de senderismo, cantimplora, comida y botiquín de primeros auxilios. El senderismo es una actividad apta para personas de todas las edades y niveles de condición física.";
     $argumentos['imagen1'] = "img/senderismo.jpg";
@@ -73,7 +73,7 @@
   function rellenarSnowboard(){
     $argumentos = [];
     $argumentos['nombre'] = "Snowboard";
-    $argumentos['fecha'] = "06/06/2024";
+    $argumentos['fecha'] = "2024-06-06";
     $argumentos['precio'] = "69.99€";
     $argumentos['contenido'] = "El snowboard es un deporte de invierno que consiste en deslizarse sobre la nieve utilizando una tabla de snowboard. Se puede practicar en diferentes modalidades como el snowboard alpino, el snowboard freestyle y el snowboard freeride. El snowboard alpino se realiza en pistas preparadas y se caracteriza por descensos rápidos y giros pronunciados. El snowboard freestyle incluye saltos, trucos y acrobacias en el snowpark. El snowboard freeride implica descensos fuera de pista y en terrenos naturales. Para practicar snowboard se necesitan equipos como tabla de snowboard, botas de snowboard, fijaciones, casco, gafas de sol, guantes, ropa térmica, chaqueta impermeable, pantalones de snowboard y protecciones. El snowboard es un deporte emocionante y desafiante que puede ser disfrutado por personas de todas las edades.";
     $argumentos['imagen1'] = "img/snowboard.jpg";
@@ -96,7 +96,7 @@
   function rellenarRafting(){
     $argumentos = [];
     $argumentos['nombre'] = "Rafting en aguas bravas";
-    $argumentos['fecha'] = "07/06/2024";
+    $argumentos['fecha'] = "2024-06-07";
     $argumentos['precio'] = "49.99€";
     $argumentos['contenido'] = "El rafting es un deporte acuático que consiste en descender ríos en balsas inflables. Se puede practicar en diferentes niveles de dificultad, desde aguas tranquilas hasta rápidos extremos. El rafting es una actividad emocionante y desafiante que requiere trabajo en equipo y coordinación. Para practicar rafting se necesitan equipos como balsa inflable, remos, casco, chaleco salvavidas, traje de neopreno, botas de agua y cuerda de seguridad. El rafting es una actividad apta para personas de todas las edades y niveles de condición física.";
     $argumentos['imagen1'] = "img/rafting.jpg";
@@ -119,7 +119,7 @@
   function rellenarDescensoBici(){
     $argumentos = [];
     $argumentos['nombre'] = "Descenso en bicicleta de montaña";
-    $argumentos['fecha'] = "08/06/2024";
+    $argumentos['fecha'] = "2024-06-08";
     $argumentos['precio'] = "69.99€";
     $argumentos['contenido'] = "El descenso en bicicleta de montaña es una actividad deportiva que consiste en descender por senderos y caminos de montaña en bicicleta. Se puede practicar en diferentes tipos de terreno, desde pistas forestales hasta senderos técnicos y empinados. El descenso en bicicleta de montaña es una actividad emocionante y desafiante que requiere habilidad y concentración. Para practicar descenso en bicicleta de montaña se necesitan equipos como bicicleta de montaña, casco, guantes, gafas de sol, ropa adecuada, protecciones y botiquín de primeros auxilios. El descenso en bicicleta de montaña es una actividad apta para personas con experiencia en ciclismo de montaña y un buen nivel de condición física.";
     $argumentos['imagen1'] = "img/descenso.jpg";
@@ -142,7 +142,7 @@
   function rellenarParapente(){
     $argumentos = [];
     $argumentos['nombre'] = "Parapente";
-    $argumentos['fecha'] = "09/06/2024";
+    $argumentos['fecha'] = "2024-06-09";
     $argumentos['precio'] = "89.99€";
     $argumentos['contenido'] = "El parapente es un deporte aéreo que consiste en volar en parapente, una aeronave ligera y flexible. Se puede practicar en diferentes lugares como montañas, colinas, acantilados y playas. El parapente es una actividad emocionante y relajante que permite disfrutar de vistas panorámicas y la sensación de libertad. Para practicar parapente se necesitan equipos como parapente, arnés, casco, radio, altímetro, GPS, ropa adecuada y calzado cómodo. El parapente es una actividad apta para personas de todas las edades y niveles de condición física.";
     $argumentos['imagen1'] = "img/parapente.jpg";
@@ -165,7 +165,7 @@
   function rellenarCamping(){
     $argumentos = [];
     $argumentos['nombre'] = "Camping y noche de estrellas";
-    $argumentos['fecha'] = "10/06/2024";
+    $argumentos['fecha'] = "2024-06-10";
     $argumentos['precio'] = "29.99€";
     $argumentos['contenido'] = "El camping es una actividad al aire libre que consiste en acampar en la naturaleza. Se puede practicar en diferentes lugares como montañas, bosques, valles, costas y ríos. El camping es una actividad relajante y divertida que permite disfrutar de la naturaleza y el aire libre. La noche de estrellas es una actividad que consiste en observar las estrellas y los astros en el cielo nocturno. Es una experiencia mágica y fascinante que permite contemplar la inmensidad del universo.";
     $argumentos['imagen1'] = "img/camping.jpg";
@@ -187,7 +187,7 @@
   function rellenarAvistamientoAves(){
     $argumentos = [];
     $argumentos['nombre'] = "Avistamiento de aves";
-    $argumentos['fecha'] = "11/06/2024";
+    $argumentos['fecha'] = "2024-06-11";
     $argumentos['precio'] = "19.99€";
     $argumentos['contenido'] = "El avistamiento de aves es una actividad de observación de aves en su hábitat natural. Se puede practicar en diferentes lugares como bosques, humedales, ríos, lagos y montañas. El avistamiento de aves es una actividad relajante y educativa que permite conocer la diversidad de aves que habitan en un lugar. Para practicar avistamiento de aves se necesitan equipos como prismáticos, guía de aves, cuaderno de campo, cámara fotográfica, ropa adecuada y calzado cómodo. El avistamiento de aves es una actividad apta para personas de todas las edades y niveles de experiencia.";
     $argumentos['imagen1'] = "img/aves.jpg";
