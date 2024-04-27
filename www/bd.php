@@ -57,10 +57,10 @@ class Database {
         $statement->execute();
     }
 
-    public function getActividad($nombre){
-        $query = "SELECT * FROM actividad WHERE nombre = ?";
+    public function getActividad($id){
+        $query = "SELECT * FROM actividad WHERE id = ?";
         $statement = $this->mysqli->prepare($query);
-        $statement->bind_param("s", $nombre);
+        $statement->bind_param("i", $id);
         $statement->execute();
         $result = $statement->get_result();
 

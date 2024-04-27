@@ -207,37 +207,16 @@
     return $argumentos;
   }
   
-  function gestionarParametros(){
-    $argumentos = [];
-  
-  
+  function getIdActividad(){
+    $id = "";  
+
     if (isset($_GET['ev'])) {
-        if ($_GET['ev'] == 1) {
-        $argumentos = rellenarEscalada();
-        } else if ($_GET['ev'] == 2) {
-        $argumentos = rellenarEsqui();
-        } else if ($_GET['ev'] == 3) {
-        $argumentos = rellenarSenderismo();
-        } else if ($_GET['ev'] == 4) {
-        $argumentos = rellenarSnowboard();
-        } else if ($_GET['ev'] == 5) {
-        $argumentos = rellenarRafting();
-        } else if ($_GET['ev'] == 6) {
-        $argumentos = rellenarDescensoBici();
-        } else if ($_GET['ev'] == 7) {
-        $argumentos = rellenarParapente();
-        } else if ($_GET['ev'] == 8) {
-        $argumentos = rellenarCamping();
-        } else if ($_GET['ev'] == 9) {
-        $argumentos = rellenarAvistamientoAves();
-        } else {
-        $argumentos = rellenarEscalada();       
-        }
+        $id = $_GET['ev'];
     } else {
-        $argumentos = rellenarEscalada();
+        $id = -1;
     }
 
-    return $argumentos;
+    return $id;
   }
   
   
