@@ -12,8 +12,6 @@
 
   echo $twig->render('actividad.html', $actividad);
 
-  $palabras_prohibidas = $dataBase->getPalabrasProhibidas();
-  // foreach ($palabras_prohibidas as $palabra) {
-  //   echo $palabra . "<br>";
-  // }
+  // $palabras_prohibidas = $dataBase->getPalabrasProhibidas();
+  // echo json_encode($palabras_prohibidas);
 ?>

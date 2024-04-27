@@ -41,7 +41,18 @@ formulario.addEventListener('submit', (evento) =>{
 
 });
 
-const palabrasProhibidas = ['gilipollas', 'polla', 'mierda', 'idiota', 'tonto', 'cabron', 'cabrón', 'puta', 'coño', 'joder', 'hostia', 'capullo'];
+// const palabrasProhibidas = ['gilipollas', 'polla', 'mierda', 'idiota', 'tonto', 'cabron', 'cabrón', 'puta', 'coño', 'joder', 'hostia', 'capullo'];
+
+let palabrasProhibidas = [];
+fetch('palabras_prohibidas.php').then((response) => response.json()).then((datos) => {
+    console.log("Datos recibidos: ");
+    console.log(datos);
+    palabrasProhibidas = datos;
+    console.log("Palabras prohibidas: ");
+    console.log(palabrasProhibidas);
+}).catch((error) => {
+    console.log(error);
+});
 
 const campoComentario = document.getElementById('texto-comentario');
 
