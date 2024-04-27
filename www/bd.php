@@ -75,6 +75,30 @@ class Database {
         return $actividad;
     }
 
+    public function rellenarPalabrasProhibidas($palabras){
+        $query = "INSERT INTO palabras_prohibidas (palabra) VALUES (?)";
+        $statement = $this->mysqli->prepare($query);
+        $statement->bind_param("s", $palabra);
+
+        foreach ($palabras as $palabra) {
+            $statement->execute();
+        }
+    }
+
+    public function getPalabrasProhibidas(){
+        $query = "SELECT palabra FROM palabras_prohibidas";
+        $result = $this->mysqli->query($query);
+
+        $palabras = [];
+        if ($result->num_rows > 0) {
+            while ($row = $result->fetch_assoc()) {
+                array_push($palabras, $row['palabra']);
+            }
+        }
+
+        return $palabras;
+    }
+
     
 
     // Destructor que cierra la conexión

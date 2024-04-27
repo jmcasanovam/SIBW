@@ -11,4 +11,9 @@
   $actividad = $dataBase->getActividad($id);
 
   echo $twig->render('actividad.html', $actividad);
+
+  $palabras_prohibidas = $dataBase->getPalabrasProhibidas();
+  // foreach ($palabras_prohibidas as $palabra) {
+  //   echo $palabra . "<br>";
+  // }
 ?>
