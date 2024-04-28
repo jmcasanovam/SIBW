@@ -10,6 +10,6 @@
     $id = getIdActividad();
     $actividad = $dataBase->getActividad($id);
 
-    echo $twig->render('imprimir.html', $actividad);
+    echo $twig->render('imprimir.html', ["actividad" => $actividad]);
     
 ?>

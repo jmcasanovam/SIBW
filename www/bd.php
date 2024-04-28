@@ -99,6 +99,21 @@ class Database {
         return $palabras;
     }
 
+    public function getComentarios(){
+        $query = "SELECT * FROM comentarios";
+        $result = $this->mysqli->query($query);
+
+        $comentarios = [];
+        if ($result->num_rows > 0) {
+            while ($row = $result->fetch_assoc()) {
+                array_push($comentarios, array('nombre' => $row['nombre'], 'email' => $row['email'], 'comentario' => $row['comentario'], 'fecha' => date('d-m-Y', strtotime($row['fecha'])), 'hora' => date('H:i', strtotime($row['hora']))));
+                
+            }
+        }
+
+        return $comentarios;
+    }
+
     
 
     // Destructor que cierra la conexión

@@ -12,21 +12,21 @@
 {% block contenido %}
     <!-- Elemento principal de la página web. Contenido de la actividad -->
     <article class="descripcion-actividad">
-        <h2>{{ nombre }} </h2>
-        <h4>Fecha de realización: {{ fecha }}</h4>
-        <h5>Por sólo {{ precio }}</h5>
-        <p class="formato-texto">{{ contenido }}</p>
+        <h2>{{ actividad["nombre"] }} </h2>
+        <h4>Fecha de realización: {{ actividad["fecha"] }}</h4>
+        <h5>Por sólo {{ actividad["precio"] }}</h5>
+        <p class="formato-texto">{{ actividad["contenido"] }}</p>
 
 
         <!-- para marcar la foto en el documento, agrupar y etiquetar el contenido multimedia -->
         <figure class="contenedor-dos-imagenes">
             <div class="contenedor-columna">
-                <img src={{ imagen1 }} alt={{ pie_imagen1 }} class="imagen-escalada">
-                <figcaption class="formato-texto centrar-texto">{{ pie_imagen1 }}</figcaption>
+                <img src={{ actividad["imagen1"] }} alt={{ actividad["pie_imagen1"] }} class="imagen-escalada">
+                <figcaption class="formato-texto centrar-texto">{{ actividad["pie_imagen1"] }}</figcaption>
             </div>
             <div class="contenedor-columna">
-                <img src={{ imagen2 }} alt={{ pie_imagen2 }} class="imagen-escalada">
-                <figcaption class="formato-texto centrar-texto">{{ pie_imagen2 }}</figcaption>
+                <img src={{ actividad["imagen2"] }} alt={{ actividad["pie_imagen2"] }} class="imagen-escalada">
+                <figcaption class="formato-texto centrar-texto">{{ actividad["pie_imagen2"] }}</figcaption>
             </div>
 
         </figure>
@@ -36,28 +36,28 @@
             Material necesario:
         </p>
         <ul>
-            {% for material in materiales %}
+            {% for material in actividad["materiales"] %}
             <li class="formato-texto">{{ material }}</li>
             {% endfor %}
 
         </ul>
 
         <p class="formato-texto">
-            Nivel de dificultad: {{ dificultad }}
+            Nivel de dificultad: {{ actividad["dificultad"] }}
         </p>
 
         <p class="formato-texto">
-            Duración: {{ duracion }}
+            Duración: {{ actividad["duracion"] }}
         </p>
 
         <p class="formato-texto">
-            Edad mínima: {{ edad_minima }}
+            Edad mínima: {{ actividad["edad_minima"] }}
         </p>
 
         <p class="formato-texto">Enlaces a otras páginas que deberías ver: </p>
 
         <ul>
-            {% for enlace in enlaces %}
+            {% for enlace in actividad["enlaces"] %}
             <li class="formato-texto"><a href={{ enlace }} target="_blank" class="enlace-basico">{{ enlace }}</a></li>
             {% endfor %}
         </ul>
@@ -75,7 +75,7 @@
             </div>
 
             <div>
-                <a href={{ imprimir }}>
+                <a href={{ actividad["imprimir"] }}>
                     <img src="./img/imprimir.png" id="icono-imprimir">
                 </a>
             </div>
@@ -118,29 +118,20 @@
                 <button type="reset" id="borrador" class="boton">Limpiar Contenido</button>
                 
             </form>
-            <div class="caja-comentario" id="comentario1">
+            
+            {% for comentario in comentarios %}
+            <div class="caja-comentario">
                 <p class="autor">
-                    Juan Palomo
+                    {{ comentario["nombre"] }}
                 </p>
                 <p class="fecha-hora">
-                    10/09/2021 11:40
+                    {{ comentario["fecha"] }} {{ comentario["hora"] }}
                 </p>
                 <p class="texto-comentario">
-                    Tened cuidado con los precios, no son los que aparecen en la página web.
-                </p>
-
-            </div>
-            <div class="caja-comentario" id="comentario2">
-                <p class="autor">
-                    Aitor Tilla
-                </p>
-                <p class="fecha-hora">
-                    03/06/2023 12:00
-                </p>
-                <p class="texto-comentario">
-                    Me ha encantado la actividad, la recomiendo a todo el mundo.
+                    {{ comentario["comentario"] }}
                 </p>
             </div>
+            {% endfor %}
         </div>
     </aside>
 
