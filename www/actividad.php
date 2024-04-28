@@ -11,15 +11,6 @@
   $actividad = $dataBase->getActividad($id);
   $comentarios = $dataBase->getComentarios();
   
-  
-  if($comentarios == null){
-    echo "No hay comentarios";
-  }
-  else{
-    foreach($comentarios as $comentario){
-      echo $comentario['nombre'];
-    }
-  }
 
   echo $twig->render('actividad.html', ["actividad" => $actividad,"comentarios" => $comentarios]);
 
