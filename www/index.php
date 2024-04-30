@@ -9,7 +9,5 @@
     $actividades = $dataBase->getActividades();
 
     echo $twig->render('principal.html', ['actividades' => $actividades]);
-
-    // echo $twig->render('principal.html',[]);
     
 ?>
