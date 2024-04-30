@@ -114,6 +114,20 @@ class Database {
         return $comentarios;
     }
 
+    public function getActividades(){
+        $query = "SELECT * FROM actividad";
+        $result = $this->mysqli->query($query);
+
+        $actividades = [];
+        if ($result->num_rows > 0) {
+            while ($row = $result->fetch_assoc()) {
+                array_push($actividades, array('id' => $row['id'], 'nombre' => $row['nombre'], 'imagen1' => $row['imagen1']));
+            }
+        }
+
+        return $actividades;
+    }
+
     
 
     // Destructor que cierra la conexión

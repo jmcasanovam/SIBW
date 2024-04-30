@@ -15,105 +15,19 @@
 
     <div class="view-content">
 
-        <!-- Escalada -->
+        {% for actividad in actividades %}
         <div class="actividad">
-            <a href="actividad.php?ev=1">
-                <p class="titulo-actividad">Escalada</p>
+            <a href="actividad.php?ev={{ actividad["id"] }}">
+                <p class="titulo-actividad">{{ actividad["nombre"] }}</p>
 
                 <div class="imagen-actividad">
-                    <img src="./img/escalada.jpg">
+                    <img src="{{ actividad["imagen1"] }}">
                 </div>
             </a>
         </div>
+        {% endfor %}
 
-        <!-- Esqui -->
-        <div class="actividad">
-            <a href="actividad.php?ev=2">
-                <p class="titulo-actividad">Esqui</p>
-
-                <div class="imagen-actividad">
-                    <img src="./img/esqui.jpg">
-                </div>
-            </a>
-        </div>
-
-        <!-- Senderismo -->
-        <div class="actividad">
-            <a href="actividad.php?ev=3">
-                <p class="titulo-actividad">Senderismo</p>
-
-                <div class="imagen-actividad">
-                    <img src="./img/senderismo.jpg">
-                </div>
-            </a>
-        </div>
-
-        <!-- Snowboard -->
-        <div class="actividad">
-            <a href="actividad.php?ev=4">
-                <p class="titulo-actividad">Snowboard</p>
-
-                <div class="imagen-actividad">
-                    <img src="./img/snowboard.jpg">
-                </div>
-            </a>
-        </div>
-
-        <!-- Rafting -->
-        <div class="actividad">
-            <a href="actividad.php?ev=5">
-                <p class="titulo-actividad">Rafting en aguas bravas</p>
-
-                <div class="imagen-actividad">
-                    <img src="./img/rafting.jpg">
-                </div>
-            </a>
-        </div>
-
-        <!-- Descenso en bicicleta de montaña -->
-        <div class="actividad">
-            <a href="actividad.php?ev=6">
-                <p class="titulo-actividad">Descenso en bicicleta de montaña</p>
-
-                <div class="imagen-actividad">
-                    <img src="./img/descenso.jpg">
-                </div>
-            </a>
-        </div>
-
-        <!-- Parapente -->
-        <div class="actividad">
-            <a href="actividad.php?ev=7">
-                <p class="titulo-actividad">Parapente</p>
-
-                <div class="imagen-actividad">
-                    <img src="./img/parapente.jpg">
-                </div>
-            </a>
-        </div>
-
-        <!-- Camping y noche de estrellas -->
-        <div class="actividad">
-            <a href="actividad.php?ev=8">
-                <p class="titulo-actividad">Camping y noche de estrellas</p>
-
-                <div class="imagen-actividad">
-                    <img src="./img/camping.jpg">
-                </div>
-            </a>
-        </div>
-
-        <!-- Avistamiento de aves -->
-        <div class="actividad">
-            <a href="actividad.php?ev=9">
-                <p class="titulo-actividad">Avistamiento de aves</p>
-
-                <div class="imagen-actividad">
-                    <img src="./img/aves.jpg" alt="Escalada">
-                </div>
-            </a>
-        </div>
-
+       
     </div>
 </nav>
 
