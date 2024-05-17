@@ -1,0 +1,34 @@
+{% extends "padre.html" %}
+
+{% block titulo %}
+{{ parent() }} : Principal
+{% endblock %}
+
+{% block importaciones %}
+{{ parent() }}
+{% endblock %}
+
+{% block contenido %}
+<div>
+    <h2>Perfil de usuario</h2>
+    <div>
+        <!-- <img src="img/default_user.jpg" alt="foto usuario" width="7%" height="7%"> -->
+        <p>Nombre: {{ usuario["nombre"] }}</p>
+        <p>Correo: {{ usuario["email"] }}</p>
+        <p>Rol: {{ usuario["rol"] }}</p>
+    </div>
+    <div>
+        <a href="editar_perfil.php">Editar perfil</a>
+    </div>
+    <div>
+        <a href="cambiar_contrasena.php">Cambiar contraseña</a>
+    </div>
+    <div>
+        <a href="eliminar_cuenta.php">Eliminar cuenta</a>
+    </div>
+    <div>
+        <a href="logout.php">Cerrar sesión</a>
+    </div>
+</div>
+
+{% endblock %}

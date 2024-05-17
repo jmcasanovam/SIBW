@@ -17,11 +17,13 @@
       session_start();
       
       $_SESSION['email'] = $email;
+      header("Location: index.php");
+      exit();
+
+    }else{
+      echo "Usuario o contraseña incorrectos";
     }
     
-    header("Location: index.php");
-    
-    exit();
   }
   
   echo $twig->render('login.html', []);
