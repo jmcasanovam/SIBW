@@ -129,7 +129,7 @@ class Database {
     }
 
     public function crearTablaUsuarios(){
-        $querry = "CREATE TABLE usuarios (email VARCHAR(255) PRIMARY KEY, password VARCHAR(255), nombre VARCHAR(255) NOT NULL, rol ENUM('anonimo', 'registrado', 'moderador', 'gestor', 'superusuario') NOT NULL DEFAULT 'registrado', fecha_registro TIMESTAMP DEFAULT CURRENT_TIMESTAMP)";
+        $querry = "CREATE TABLE usuarios (email VARCHAR(255) PRIMARY KEY, password VARCHAR(255), nombre VARCHAR(255) NOT NULL, rol ENUM('registrado', 'moderador', 'gestor', 'superusuario') NOT NULL DEFAULT 'registrado', fecha_registro TIMESTAMP DEFAULT CURRENT_TIMESTAMP)";
         $this->mysqli->query($querry);
 
         
@@ -146,6 +146,11 @@ class Database {
         $statement->bind_param("ssss", $email, $password, $nombre, $rol);
 
         $statement->execute();
+        if ($statement->affected_rows > 0) {// Si se ha insertado algún registro
+            return true;
+        } else {
+            return false;
+        }
     }
 
     public function getUsuarios(){
