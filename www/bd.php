@@ -128,6 +128,55 @@ class Database {
         return $actividades;
     }
 
+    public function crearTablaUsuarios(){
+        $querry = "CREATE TABLE usuarios (email VARCHAR(255) PRIMARY KEY, password VARCHAR(255), nombre VARCHAR(255) NOT NULL, rol ENUM('anonimo', 'registrado', 'moderador', 'gestor', 'superusuario') NOT NULL DEFAULT 'registrado', fecha_registro TIMESTAMP DEFAULT CURRENT_TIMESTAMP)";
+        $this->mysqli->query($querry);
+
+        
+    }
+
+    public function crearUsuario($usuario){
+        $email = $usuario['email'];
+        $password = password_hash($usuario['password'], PASSWORD_DEFAULT);
+        $nombre = $usuario['nombre'];
+        $rol = isset($usuario['rol']) ? $usuario['rol'] : 'registrado';
+
+        $query = "INSERT INTO usuarios (email, password, nombre, rol) VALUES (?,?,?,?)";
+        $statement = $this->mysqli->prepare($query);
+        $statement->bind_param("ssss", $email, $password, $nombre, $rol);
+
+        $statement->execute();
+    }
+
+    public function getUsuarios(){
+        $query = "SELECT * FROM usuarios";
+        $result = $this->mysqli->query($query);
+
+        $usuarios = [];
+        if ($result->num_rows > 0) {
+            while ($row = $result->fetch_assoc()) {
+                array_push($usuarios, array('email' => $row['email'], 'nombre' => $row['nombre'], 'rol' => $row['rol'], 'fecha_registro' => date('d-m-Y H:i', strtotime($row['fecha_registro']))));
+            }
+        }
+
+        return $usuarios;
+    }
+
+    public function checkLogin($email, $password){
+        $query = "SELECT password FROM usuarios WHERE email = ?";
+        $statement = $this->mysqli->prepare($query);
+        $statement->bind_param("s", $email);
+        $statement->execute();
+        $result = $statement->get_result();
+
+        if ($result->num_rows > 0) {
+            $row = $result->fetch_assoc();
+            return password_verify($password, $row['password']);
+        }
+
+        return false;
+    }
+
     
 
     // Destructor que cierra la conexión
