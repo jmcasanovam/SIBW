@@ -9,23 +9,45 @@
 {% endblock %}
 
 {% block contenido %}
-<div>
-    <h2>Perfil de usuario</h2>
-    <div>
-        <!-- <img src="img/default_user.jpg" alt="foto usuario" width="7%" height="7%"> -->
-        <p>Nombre: {{ usuario["nombre"] }}</p>
-        <p>Correo: {{ usuario["email"] }}</p>
-        <p>Rol: {{ usuario["rol"] }}</p>
-    </div>
-    <div>
-        <a href="editar_perfil.php">Editar perfil</a>
-    </div>
-    <div>
-        <a href="eliminar_cuenta.php">Eliminar cuenta</a>
-    </div>
-    <div>
-        <a href="logout.php">Cerrar sesión</a>
-    </div>
-</div>
-
+    {% if sesion_iniciada %}
+        <div>
+            <h2>Perfil de usuario</h2>
+            <div>
+                <!-- <img src="img/default_user.jpg" alt="foto usuario" width="7%" height="7%"> -->
+                <p>Nombre: {{ usuario["nombre"] }}</p>
+                <p>Correo: {{ usuario["email"] }}</p>
+                <p>Rol: {{ usuario["rol"] }}</p>
+            </div>
+            <div>
+                <a href="editar_perfil.php">Editar perfil</a>
+            </div>
+            <div>
+                <a href="eliminar_cuenta.php">Eliminar cuenta</a>
+            </div>
+            <div>
+                <a href="logout.php">Cerrar sesión</a>
+            </div>
+            {% if usuario["rol"] == "superusuario" %}
+                <div>
+                    <a href="administrar_usuarios.php">Administrar usuarios</a>
+                    <a href="administrar_actividades.php">Administrar actividades</a>
+                    <a href="comentarios_usuarios.php">Ver y moderar comentarios</a>
+                </div>
+            {% elseif usuario["rol"] == "moderador" %}
+                <div>
+                    <a href="comentarios_usuarios.php">Ver y moderar comentarios</a>
+                </div>
+            {% elseif usuario["rol"] == "gestor" %}
+                <div>
+                    <a href="administrar_actividades.php">Administrar actividades</a>
+                </div>          
+            {% endif %}
+        </div>
+    {% else %}
+        <div>
+            <h2>Perfil de usuario</h2>
+            <p>Debes iniciar sesión para ver tu perfil</p>
+            <a href="login.php">Iniciar sesión</a>
+        </div>
+    {% endif %}
 {% endblock %}
