@@ -8,10 +8,14 @@
   
 
   $sesion_iniciada = false;
+  $email = "";
+  $nombre = "";
 
   session_start();
   if(isset($_SESSION['email'])){
       $sesion_iniciada = true;
+      $nombre = $_SESSION['nombre'];
+      $email = $_SESSION['email'];
   }
     
   $dataBase = new Database();
@@ -20,6 +24,6 @@
   $comentarios = $dataBase->getComentarios();
   
 
-  echo $twig->render('actividad.html', ["actividad" => $actividad,"comentarios" => $comentarios, 'sesion_iniciada' => $sesion_iniciada]);
+  echo $twig->render('actividad.html', ["actividad" => $actividad,"comentarios" => $comentarios, 'sesion_iniciada' => $sesion_iniciada, 'nombre' => $nombre, 'email' => $email]);
 
 ?>

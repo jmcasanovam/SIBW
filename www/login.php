@@ -15,8 +15,11 @@
   
     if ($bd->checkLogin($email, $pass)) {
       session_start();
+      $usuario = $bd->getUser($email);
       
-      $_SESSION['email'] = $email;
+      $_SESSION['email'] = $usuario['email'];
+      $_SESSION['nombre'] = $usuario['nombre'];
+      $_SESSION['rol'] = $usuario['rol'];
       header("Location: index.php");
       exit();
 

@@ -17,6 +17,8 @@
       session_start();
       
       $_SESSION['email'] = $email;
+      $_SESSION['nombre'] = $nombre;
+      $_SESSION['rol'] = 'registrado';
       header("Location: index.php");
       exit();
     }

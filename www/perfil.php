@@ -12,7 +12,8 @@ $twig = new \Twig\Environment($loader);
 
   if(isset($_SESSION['email'])){
     $bd = new Database();
-    $usuario = $bd->getUser($_SESSION['email']);
+    // $usuario = $bd->getUser($_SESSION['email']);
+    $usuario = ['email' => $_SESSION['email'], 'nombre' => $_SESSION['nombre'], 'rol' => $_SESSION['rol']];
     $sesion_iniciada = true;
     echo $twig->render('perfil.html', ['usuario' => $usuario, 'sesion_iniciada' => $sesion_iniciada]);
   }else{

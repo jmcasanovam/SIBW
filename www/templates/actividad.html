@@ -88,51 +88,54 @@
 
 {% endblock %}
 
+
 {% block comentarios %}
+    {% if sesion_iniciada %}
 
-    <aside class="menu-comentarios">
-        <button id="mostrarComentarios">
-            <img src="./img/comentarios.png" alt="Icono comentarios">
-            <figcaption class="formato-texto centrar-texto texto-claro">Mostrar/Ocultar Comentarios</figcaption>
-        </button>
-        <div class="comentarios oculto">
-            <h2 class="texto-centrado texto-claro">Comentarios</h2>
+        <aside class="menu-comentarios">
+            <button id="mostrarComentarios">
+                <img src="./img/comentarios.png" alt="Icono comentarios">
+                <figcaption class="formato-texto centrar-texto texto-claro">Mostrar/Ocultar Comentarios</figcaption>
+            </button>
+            <div class="comentarios oculto">
+                <h2 class="texto-centrado texto-claro">Comentarios</h2>
 
-            <p class="formato-texto texto-centrado texto-claro">¿Te ha gustado la actividad? ¿Quieres dejar un comentario?</p>
+                <p class="formato-texto texto-centrado texto-claro">¿Te ha gustado la actividad? ¿Quieres dejar un comentario?</p>
 
-            <h3 class="formato-texto texto-claro">Dejanos tu comentario:</h3>
-            <form id="formulario-comentario">
+                <h3 class="formato-texto texto-claro">Dejanos tu comentario:</h3>
+                <form id="formulario-comentario">
 
-                <!-- for indica a que input quiero ponerle el nombre -->
-                <label for="nombre" class="texto-claro texto-mediano">Nombre:</label>
-                <!-- Defino el tipo de entrada de texto, un identificador y  un nombre para el valor-->
-                <input type="text" id="nombre" name="nombre" required>
+                    <!-- for indica a que input quiero ponerle el nombre -->
+                    <!-- <label for="nombre" class="texto-claro texto-mediano">Nombre:</label> -->
+                    <!-- Defino el tipo de entrada de texto, un identificador y  un nombre para el valor-->
+                    <input type="text" id="nombre" name="nombre" value={{ nombre }} disabled class="oculto">
 
-                <label for="email" class="texto-claro texto-mediano">Email:</label>
-                <input type="email" id="email" name="email" required>
+                    <!-- <label for="email" class="texto-claro texto-mediano">Email:</label> -->
+                    <input type="email" id="email" name="email" value={{ email }} disabled class="oculto">
 
-                <label for="texto-comentario" class="texto-claro texto-mediano">Comentario:</label>
-                <textarea name="texto-comentario" id="texto-comentario" rows="4" required></textarea>
+                    <label for="texto-comentario" class="texto-claro texto-mediano">Comentario:</label>
+                    <textarea name="texto-comentario" id="texto-comentario" rows="4" required></textarea>
 
-                <button type="submit" id="enviar" class="boton">Publicar Comentario</button>
-                <button type="reset" id="borrador" class="boton">Limpiar Contenido</button>
+                    <button type="submit" id="enviar" class="boton">Publicar Comentario</button>
+                    <button type="reset" id="borrador" class="boton">Limpiar Contenido</button>
+                    
+                </form>
                 
-            </form>
-            
-            {% for comentario in comentarios %}
-            <div class="caja-comentario">
-                <p class="autor">
-                    {{ comentario["nombre"] }}
-                </p>
-                <p class="fecha-hora">
-                    {{ comentario["fecha"] }} {{ comentario["hora"] }}
-                </p>
-                <p class="texto-comentario">
-                    {{ comentario["comentario"] }}
-                </p>
+                {% for comentario in comentarios %}
+                <div class="caja-comentario">
+                    <p class="autor">
+                        {{ comentario["nombre"] }}
+                    </p>
+                    <p class="fecha-hora">
+                        {{ comentario["fecha"] }} {{ comentario["hora"] }}
+                    </p>
+                    <p class="texto-comentario">
+                        {{ comentario["comentario"] }}
+                    </p>
+                </div>
+                {% endfor %}
             </div>
-            {% endfor %}
-        </div>
-    </aside>
-
+        </aside>
+    {% endif %}
 {% endblock %}
+

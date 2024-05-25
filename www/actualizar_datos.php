@@ -16,6 +16,7 @@ if(isset($_SESSION['email'])) {
             // Actualizar la sesión si el email ha cambiado
             if ($old_user_email != $email) {
                 $_SESSION['email'] = $email;
+                $_SESSION['nombre'] = $nombre;
             }
             header("Location: perfil.php");
             exit();
