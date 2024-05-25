@@ -13,7 +13,8 @@ $twig = new \Twig\Environment($loader);
   if(isset($_SESSION['email'])){
     $bd = new Database();
     $usuario = $bd->getUser($_SESSION['email']);
-    echo $twig->render('perfil.html', ['usuario' => $usuario]);
+    $sesion_iniciada = true;
+    echo $twig->render('perfil.html', ['usuario' => $usuario, 'sesion_iniciada' => $sesion_iniciada]);
   }else{
     header("Location: login.php");
   }

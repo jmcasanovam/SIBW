@@ -5,13 +5,16 @@
     $loader = new \Twig\Loader\FilesystemLoader('templates');
     $twig = new \Twig\Environment($loader);
 
+    $sesion_iniciada = false;
+
     session_start();
-    if(!isset($_SESSION['email'])){
-        echo "No has iniciado sesion";
+    if(isset($_SESSION['email'])){
+        $sesion_iniciada = true;
     }
+    
     $dataBase = new Database();
     $actividades = $dataBase->getActividades();
 
-    echo $twig->render('principal.html', ['actividades' => $actividades]);
+    echo $twig->render('principal.html', ['actividades' => $actividades, 'sesion_iniciada' => $sesion_iniciada]);
     
 ?>

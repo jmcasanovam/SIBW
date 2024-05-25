@@ -6,12 +6,20 @@
   $loader = new \Twig\Loader\FilesystemLoader('templates');
   $twig = new \Twig\Environment($loader);
   
+
+  $sesion_iniciada = false;
+
+  session_start();
+  if(isset($_SESSION['email'])){
+      $sesion_iniciada = true;
+  }
+    
   $dataBase = new Database();
   $id = getIdActividad();
   $actividad = $dataBase->getActividad($id);
   $comentarios = $dataBase->getComentarios();
   
 
-  echo $twig->render('actividad.html', ["actividad" => $actividad,"comentarios" => $comentarios]);
+  echo $twig->render('actividad.html', ["actividad" => $actividad,"comentarios" => $comentarios, 'sesion_iniciada' => $sesion_iniciada]);
 
 ?>

@@ -50,9 +50,13 @@
                         <a href="#foot">Contacto</a>
                     </div>
                 </div>
+                {% if sesion_iniciada %}
                 <a href="perfil.php">
                     <img src="img/default_user.jpg" alt="foto usuario" width="7%" height="7%">
                 </a>
+                {% else %}
+                <a href="login.php">Iniciar sesión</a>
+                {% endif %}
             </nav>
         </div>
 
