@@ -9,6 +9,10 @@
     box-shadow: none;
     background-image: none;
 }
+.foto_perfil {
+    width: 7%;
+    height: 7%;
+}
 
 .nombre_pag {
     width: 150%;

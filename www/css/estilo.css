@@ -11,6 +11,11 @@
     background-image: url(../img/mountain.jpg);
 }
 
+.foto_perfil{
+    width: 7%; 
+    height: 7%;
+}
+
 .nombre_pag {
     width: 150%;
     height: 150%;
