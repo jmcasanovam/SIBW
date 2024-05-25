@@ -31,11 +31,11 @@
                 <div>
                     <a href="administrar_usuarios.php">Administrar usuarios</a>
                     <a href="administrar_actividades.php">Administrar actividades</a>
-                    <a href="comentarios_usuarios.php">Ver y moderar comentarios</a>
+                    <a href="administrar_comentarios.php">Ver y moderar comentarios</a>
                 </div>
             {% elseif usuario["rol"] == "moderador" %}
                 <div>
-                    <a href="comentarios_usuarios.php">Ver y moderar comentarios</a>
+                    <a href="administrar_comentarios.php">Ver y moderar comentarios</a>
                 </div>
             {% elseif usuario["rol"] == "gestor" %}
                 <div>

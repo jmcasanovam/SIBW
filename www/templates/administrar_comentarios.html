@@ -1,0 +1,40 @@
+{% extends "padre.html" %}
+
+{% block titulo %}
+{{ parent() }} : Administración de comentarios
+{% endblock %}
+
+{% block importaciones %}
+{{ parent() }}
+{% endblock %}
+
+{% block contenido %}
+    {% if sesion_iniciada and rol != "registrado" %}
+        <div>
+            <h2>Administración de comentarios</h2>
+            <div>
+                <h3>Lista de comentarios</h3>
+                <ul>
+                    {% for comentario in comentarios %}
+                        <li>
+                            <p>Comentario: {{ comentario["comentario"] }}</p>
+                            <p>Fecha: {{ comentario["fecha"] }}</p>
+                            <p>Usuario: {{ comentario["nombre"] }}</p>
+                            <p>Id: {{ comentario["id"] }}</p>
+                            <img src="img/papelera.jpg" alt="Icono de papelera" class="foto_perfil">
+                            <img src="img/edicion_comentario.jpg" alt="Icono para modificar el comentario" class="foto_perfil">
+                            <!-- <a href="moderar_comentario.php?id={{ comentario["id"] }}">Moderar comentario</a> -->
+                        </li>
+                    {% endfor %}
+                </ul>
+            </div>
+            
+        </div>
+    {% else %}
+        <div>
+            <h2>Administración de comentarios</h2>
+            <p>Debes iniciar sesión para ver esta página</p>
+            <a href="login.php">Iniciar sesión</a>
+        </div>
+    {% endif %}
+{% endblock %}
