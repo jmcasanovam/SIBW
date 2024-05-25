@@ -1,0 +1,39 @@
+{% extends "padre.html" %}
+
+{% block titulo %}
+{{ parent() }} : Editar perfil
+{% endblock %}
+
+{% block importaciones %}
+{{ parent() }}
+{% endblock %}
+
+{% block contenido %}
+<div>
+    <h2>Editar perfil de usuario</h2>
+    <form action="actualizar_datos.php" method="post">
+        <div>
+            <label for="nombre">Nombre:</label>
+            <input type="text" name="nombre" id="nombre" value="{{ usuario["nombre"] }}" required>
+        </div>
+        <div>
+            <label for="email">Correo:</label>
+            <input type="email" name="email" id="email" value="{{ usuario["email"] }}" required>
+        </div>
+        <div>
+            <label for="contrasena">Contraseña:</label>
+            <input type="password" name="contrasena" id="contrasena" required>
+        </div>
+        <div>
+            <label for="rol">Rol:</label>
+            <input type="text" name="rol" id="rol" value="{{ usuario["rol"] }}" disabled>
+        </div>
+        <div>
+            <input type="submit" value="Guardar cambios">
+        </div>
+    </form>
+    <div>
+        <a href="perfil.php">Cancelar y volver al perfil</a>
+    </div>
+</div>
+{% endblock %}

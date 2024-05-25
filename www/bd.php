@@ -200,6 +200,21 @@ class Database {
         return 0;
     }
 
+    function updateUser($old_user_email, $nombre, $email, $contrasena){
+        $query = "UPDATE usuarios SET nombre = ?, email = ?, password = ? WHERE email = ?";
+        $hash_password = password_hash($contrasena, PASSWORD_DEFAULT);
+        $statement = $this->mysqli->prepare($query);
+        $statement->bind_param("ssss", $nombre, $email, $hash_password, $old_user_email);
+
+        $statement->execute();
+        if ($statement->affected_rows > 0) {// Si se ha actualizado algún registro
+            return true;
+        } else {
+            return false;
+        }
+        
+    }
+
     
 
     // Destructor que cierra la conexión
