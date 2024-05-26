@@ -106,7 +106,7 @@ class Database {
         $comentarios = [];
         if ($result->num_rows > 0) {
             while ($row = $result->fetch_assoc()) {
-                array_push($comentarios, array('nombre' => $row['nombre'], 'email' => $row['email'], 'comentario' => $row['comentario'], 'fecha' => date('d-m-Y', strtotime($row['fecha'])), 'hora' => date('H:i', strtotime($row['hora'])), 'id' => $row['id']));
+                array_push($comentarios, array('nombre' => $row['nombre'], 'email' => $row['email'], 'comentario' => $row['comentario'], 'fecha' => date('d-m-Y', strtotime($row['fecha'])), 'hora' => date('H:i', strtotime($row['hora'])), 'id' => $row['id'], 'id_actividad' => $row['id_actividad']));
                 
             }
         }
@@ -238,7 +238,7 @@ class Database {
         $comentario = [];
         if ($result->num_rows > 0) {
             $row = $result->fetch_assoc();
-            $comentario = array('nombre' => $row['nombre'], 'email' => $row['email'], 'comentario' => $row['comentario'], 'fecha' => date('d-m-Y', strtotime($row['fecha'])), 'hora' => date('H:i', strtotime($row['hora'])), 'id' => $row['id']);
+            $comentario = array('nombre' => $row['nombre'], 'email' => $row['email'], 'comentario' => $row['comentario'], 'fecha' => date('d-m-Y', strtotime($row['fecha'])), 'hora' => date('H:i', strtotime($row['hora'])), 'id' => $row['id'], 'id_actividad' => $row['id_actividad']);
         }
 
         return $comentario;
