@@ -1,0 +1,60 @@
+{% extends "padre.html" %}
+
+{% block titulo %}
+{{ parent() }} : Administrar usuarios
+{% endblock %}
+
+{% block importaciones %}
+{{ parent() }}
+{% endblock %}
+
+{% block contenido %}
+    {% if sesion_iniciada and rol == 'superusuario' %}
+        <div>
+            <h2>Administrar usuarios</h2>
+            <div>
+                <table>
+                    <tr>
+                        <th>Nombre</th>
+                        <th>Correo</th>
+                        <th>Rol</th>
+                        <th>Acciones</th>
+                    </tr>
+                    {% for usuario in usuarios %}
+                    <tr>
+                        <td>{{ usuario["nombre"] }}</td>
+                        <td>{{ usuario["email"] }}</td>
+                        <td>
+                            <form action="actualizar_rol.php" method="post">
+                                <input type="hidden" name="email" value="{{ usuario["email"] }}">
+                                <select name="rol">
+                                    <option value="registrado" {% if usuario["rol"]=='registrado' %}selected{% endif %}>
+                                        Registrado</option>
+                                    <option value="moderador" {% if usuario["rol"]=='moderador' %}selected{% endif %}>Moderador
+                                    </option>
+                                    <option value="administrador" {% if usuario["rol"]=='superusuario' %}selected{% endif %}>
+                                        Administrador</option>
+                                    <option value="gestor" {% if usuario["rol"]=='gestor' %}selected{% endif %}>
+                                        Gestor</option>
+                                </select>
+                                <button type="submit">Actualizar</button>
+                            </form>
+                        </td>
+                        <td>
+                            <a href="editar_usuario.php?id={{ usuario["email"] }}">Editar</a>
+                            <a href="eliminar_usuario.php?id={{ usuario["email"] }}">Eliminar</a>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </table>
+            </div>
+        </div>
+
+    {% else %}
+        <div>
+            <h2>Administrar usuarios</h2>
+            <p>Debes iniciar sesión para ver esta página</p>
+            <a href="login.php">Iniciar sesión</a>
+        </div>
+    {% endif %}
+{% endblock %}

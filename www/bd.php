@@ -272,6 +272,52 @@ class Database {
         }
     }
 
+    function borrarUsuario($email){
+        $query = "DELETE FROM usuarios WHERE email = ?";
+        $statement = $this->mysqli->prepare($query);
+        $statement->bind_param("s", $email);
+
+        $statement->execute();
+        if ($statement->affected_rows > 0) {// Si se ha borrado algún registro
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    function actualizarRol($id, $rol){
+        //Verificar el rol actual del usuario
+        $query = "SELECT rol FROM usuarios WHERE email = ?";
+        $statement = $this->mysqli->prepare($query);
+        $statement->bind_param("s", $id);
+        $statement->execute();
+        $result = $statement->get_result();
+        $usuario = $result->fetch_assoc();
+
+        if($usuario['rol'] == 'superusuario'){
+            //Contar el numero de superusuarios
+            $querySuperusuario = "SELECT COUNT(*) as superusuarios FROM usuarios WHERE rol = 'superusuario'";
+            $resultSuperusuario = $this->mysqli->query($querySuperusuario);
+            $superusuarios = $resultSuperusuario->fetch_assoc()['superusuarios'];
+
+            if($superusuarios <= 1 && $rol != 'superusuario'){
+                return false;
+            }
+        }
+
+        //Actualizar el rol
+        $query = "UPDATE usuarios SET rol = ? WHERE email = ?";
+        $statement = $this->mysqli->prepare($query);
+        $statement->bind_param("ss", $rol, $id);
+
+        $statement->execute();
+        if ($statement->affected_rows > 0) {// Si se ha actualizado algún registro
+            return true;
+        } else {
+            return false;
+        }
+    }
+
     
 
     // Destructor que cierra la conexión
