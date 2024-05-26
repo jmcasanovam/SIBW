@@ -272,7 +272,37 @@ class Database {
         }
     }
 
+    function verificarSuperusuarioDisponible($email){
+        //Verificar que el usuario no sea superusuario y si lo es, que haya más de un superusuario
+        $query = "SELECT rol FROM usuarios WHERE email = ?";
+        $statement = $this->mysqli->prepare($query);
+        $statement->bind_param("s", $email);
+        $statement->execute();
+        $result = $statement->get_result();
+        $usuario = $result->fetch_assoc();
+
+        if($usuario['rol'] == 'superusuario'){
+            //Contar el numero de superusuarios
+            $querySuperusuario = "SELECT COUNT(*) as superusuarios FROM usuarios WHERE rol = 'superusuario'";
+            $resultSuperusuario = $this->mysqli->query($querySuperusuario);
+            $superusuarios = $resultSuperusuario->fetch_assoc()['superusuarios'];
+
+            if($superusuarios <= 1){
+                return false;
+            }
+        }
+
+        return true;
+    }
+
     function borrarUsuario($email){
+        
+        //Verificar que el usuario no sea superusuario y si lo es, que haya más de un superusuario
+        if(!$this->verificarSuperusuarioDisponible($email)){
+            return false;
+        }
+
+
         $query = "DELETE FROM usuarios WHERE email = ?";
         $statement = $this->mysqli->prepare($query);
         $statement->bind_param("s", $email);
@@ -286,23 +316,10 @@ class Database {
     }
 
     function actualizarRol($id, $rol){
-        //Verificar el rol actual del usuario
-        $query = "SELECT rol FROM usuarios WHERE email = ?";
-        $statement = $this->mysqli->prepare($query);
-        $statement->bind_param("s", $id);
-        $statement->execute();
-        $result = $statement->get_result();
-        $usuario = $result->fetch_assoc();
-
-        if($usuario['rol'] == 'superusuario'){
-            //Contar el numero de superusuarios
-            $querySuperusuario = "SELECT COUNT(*) as superusuarios FROM usuarios WHERE rol = 'superusuario'";
-            $resultSuperusuario = $this->mysqli->query($querySuperusuario);
-            $superusuarios = $resultSuperusuario->fetch_assoc()['superusuarios'];
-
-            if($superusuarios <= 1 && $rol != 'superusuario'){
-                return false;
-            }
+        
+        //Verificar que el usuario no sea superusuario y si lo es, que haya más de un superusuario
+        if(!$this->verificarSuperusuarioDisponible($id)){
+            return false;
         }
 
         //Actualizar el rol
