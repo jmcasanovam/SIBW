@@ -21,9 +21,12 @@
                             <p>Fecha: {{ comentario["fecha"] }}</p>
                             <p>Usuario: {{ comentario["nombre"] }}</p>
                             <p>Id: {{ comentario["id"] }}</p>
-                            <img src="img/papelera.jpg" alt="Icono de papelera" class="foto_perfil">
-                            <img src="img/edicion_comentario.jpg" alt="Icono para modificar el comentario" class="foto_perfil">
-                            <!-- <a href="moderar_comentario.php?id={{ comentario["id"] }}">Moderar comentario</a> -->
+                            <a href="borrar_comentario.php?id={{ comentario["id"] }}">
+                                <img src="img/papelera.jpg" alt="Icono de papelera" class="foto_perfil">
+                            </a>
+                            <a href="editar_comentario.php?id={{ comentario["id"] }}">
+                                <img src="img/edicion_comentario.jpg" alt="Icono para modificar el comentario" class="foto_perfil">
+                            </a>
                         </li>
                     {% endfor %}
                 </ul>

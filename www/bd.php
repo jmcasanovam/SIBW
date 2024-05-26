@@ -215,6 +215,48 @@ class Database {
         
     }
 
+    function borrarComentario($id){
+        $query = "DELETE FROM comentarios WHERE id = ?";
+        $statement = $this->mysqli->prepare($query);
+        $statement->bind_param("i", $id);
+
+        $statement->execute();
+        if ($statement->affected_rows > 0) {// Si se ha borrado algún registro
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    function getComentario($id){
+        $query = "SELECT * FROM comentarios WHERE id = ?";
+        $statement = $this->mysqli->prepare($query);
+        $statement->bind_param("i", $id);
+        $statement->execute();
+        $result = $statement->get_result();
+
+        $comentario = [];
+        if ($result->num_rows > 0) {
+            $row = $result->fetch_assoc();
+            $comentario = array('nombre' => $row['nombre'], 'email' => $row['email'], 'comentario' => $row['comentario'], 'fecha' => date('d-m-Y', strtotime($row['fecha'])), 'hora' => date('H:i', strtotime($row['hora'])), 'id' => $row['id']);
+        }
+
+        return $comentario;
+    }
+
+    function editarComentario($id, $comentario){
+        $query = "UPDATE comentarios SET comentario = ? WHERE id = ?";
+        $statement = $this->mysqli->prepare($query);
+        $statement->bind_param("si", $comentario, $id);
+
+        $statement->execute();
+        if ($statement->affected_rows > 0) {// Si se ha actualizado algún registro
+            return true;
+        } else {
+            return false;
+        }
+    }
+
     
 
     // Destructor que cierra la conexión
