@@ -1,0 +1,48 @@
+{% extends "padre.html" %}
+
+{% block titulo %}
+{{ parent() }} : Editar usuario
+{% endblock %}
+
+{% block importaciones %}
+{{ parent() }}
+{% endblock %}
+
+{% block contenido %}
+    {% if sesion_iniciada and rol == 'superusuario' %}
+        <div>
+            <h2>Editar usuario</h2>
+            <form action="actualizar_usuario.php" method="post">
+                <input type="hidden" name="email1" value="{{ usuario["email"] }}">
+                <div>
+                    <label for="nombre">Nombre:</label>
+                    <input type="text" name="nombre" id="nombre" value="{{ usuario["nombre"] }}" required>
+                </div>
+                <div>
+                    <label for="email">Correo:</label>
+                    <input type="email" name="email" id="email" value="{{ usuario["email"] }}" required>
+                </div>
+                <div>
+                    <label for="contrasena">Nueva contraseña:</label>
+                    <input type="password" name="contrasena" id="contrasena" required>
+                </div>
+                <div>
+                    <label for="rol">Rol:</label>
+                    <input type="text" name="rol" id="rol" value="{{ usuario["rol"] }}" disabled>
+                </div>
+                <div>
+                    <input type="submit" value="Guardar cambios">
+                </div>
+            </form>
+            <div>
+                <a href="administrar_usuarios.php">Cancelar y volver a la administración de usuarios</a>
+            </div>
+        </div>
+    {% else %}
+        <div>
+            <h2>Editar usuario</h2>
+            <p>Debes iniciar sesión como superusuario para ver esta página</p>
+            <a href="login.php">Iniciar sesión</a>
+        </div>
+    {% endif %}
+{% endblock %}

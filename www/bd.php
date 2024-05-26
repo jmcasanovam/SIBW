@@ -315,6 +315,22 @@ class Database {
         }
     }
 
+    function getUsuario($email){
+        $query = "SELECT * FROM usuarios WHERE email = ?";
+        $statement = $this->mysqli->prepare($query);
+        $statement->bind_param("s", $email);
+        $statement->execute();
+        $result = $statement->get_result();
+
+        $usuario = [];
+        if ($result->num_rows > 0) {
+            $row = $result->fetch_assoc();
+            $usuario = array('email' => $row['email'], 'nombre' => $row['nombre'], 'rol' => $row['rol'], 'fecha_registro' => date('d-m-Y H:i', strtotime($row['fecha_registro'])));
+        }
+
+        return $usuario;
+    }
+
     function actualizarRol($id, $rol){
         
         //Verificar que el usuario no sea superusuario y si lo es, que haya más de un superusuario
