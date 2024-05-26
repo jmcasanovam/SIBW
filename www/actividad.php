@@ -24,6 +24,6 @@
   $comentarios = $dataBase->getComentarios();
   
 
-  echo $twig->render('actividad.html', ["actividad" => $actividad,"comentarios" => $comentarios, 'sesion_iniciada' => $sesion_iniciada, 'nombre' => $nombre, 'email' => $email]);
+  echo $twig->render('actividad.html', ["actividad" => $actividad,"comentarios" => $comentarios, 'sesion_iniciada' => $sesion_iniciada, 'nombre' => $nombre, 'email' => $email, 'id_actividad' => $id]);
 
 ?>
