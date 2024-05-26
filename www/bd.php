@@ -257,6 +257,21 @@ class Database {
         }
     }
 
+    function insertarComentario($nombre, $email, $comentario, $id_actividad){
+        $fecha = date('Y-m-d');
+        $hora = date('H:i:s');
+        $query = "INSERT INTO comentarios (nombre, email, comentario, fecha, hora, id_actividad) VALUES (?,?,?,?,?,?)";
+        $statement = $this->mysqli->prepare($query);
+        $statement->bind_param("sssssi", $nombre, $email, $comentario, $fecha, $hora, $id_actividad);
+
+        $statement->execute();
+        if ($statement->affected_rows > 0) {// Si se ha insertado algún registro
+            return true;
+        } else {
+            return false;
+        }
+    }
+
     
 
     // Destructor que cierra la conexión

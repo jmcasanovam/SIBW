@@ -8,38 +8,38 @@ botonComentarios.addEventListener('click', () => {
 
 formulario = document.getElementById('formulario-comentario');
 
-formulario.addEventListener('submit', (evento) =>{
-    var nombre = document.getElementById('nombre').value;
-    var email = document.getElementById('email').value;
-    var comentario = document.getElementById('texto-comentario').value;
-    var fecha = (new Date()).toLocaleDateString();
-    var hora = (new Date()).toLocaleTimeString();
+// formulario.addEventListener('submit', (evento) =>{
+//     var nombre = document.getElementById('nombre').value;
+//     var email = document.getElementById('email').value;
+//     var comentario = document.getElementById('texto-comentario').value;
+//     var fecha = (new Date()).toLocaleDateString();
+//     var hora = (new Date()).toLocaleTimeString();
 
-    //Creo un comentario
-    console.log(nombre, email, comentario, fecha, hora);
-    var nuevoComentario = document.createElement('div');
-    nuevoComentario.classList.add('caja-comentario');
+//     //Creo un comentario
+//     console.log(nombre, email, comentario, fecha, hora);
+//     var nuevoComentario = document.createElement('div');
+//     nuevoComentario.classList.add('caja-comentario');
 
-    nuevoComentario.innerHTML = `
-        <p class="autor">${nombre}</p>
-        <p class="fecha-hora">${fecha} ${hora}</p>
-        <p class="texto-comentario">${comentario}</p>
+//     nuevoComentario.innerHTML = `
+//         <p class="autor">${nombre}</p>
+//         <p class="fecha-hora">${fecha} ${hora}</p>
+//         <p class="texto-comentario">${comentario}</p>
         
-    `;
+//     `;
 
-    //Agrego el comentario al contenedor de comentarios
-    var contenedorComentarios = document.querySelector('.comentarios');
-    contenedorComentarios.appendChild(nuevoComentario);
+//     //Agrego el comentario al contenedor de comentarios
+//     var contenedorComentarios = document.querySelector('.comentarios');
+//     contenedorComentarios.appendChild(nuevoComentario);
 
-    //Evito que se envíe el formulario
-    evento.preventDefault();
+//     //Evito que se envíe el formulario
+//     evento.preventDefault();
 
-    //Limpio los campos del formulario
-    // document.getElementById('nombre').value = '';
-    // document.getElementById('email').value = '';
-    document.getElementById('texto-comentario').value = '';
+//     //Limpio los campos del formulario
+//     // document.getElementById('nombre').value = '';
+//     // document.getElementById('email').value = '';
+//     document.getElementById('texto-comentario').value = '';
 
-});
+// });
 
 // const palabrasProhibidas = ['gilipollas', 'polla', 'mierda', 'idiota', 'tonto', 'cabron', 'cabrón', 'puta', 'coño', 'joder', 'hostia', 'capullo'];
 

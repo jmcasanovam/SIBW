@@ -103,17 +103,11 @@
                 <p class="formato-texto texto-centrado texto-claro">¿Te ha gustado la actividad? ¿Quieres dejar un comentario?</p>
 
                 <h3 class="formato-texto texto-claro">Dejanos tu comentario:</h3>
-                <form id="formulario-comentario">
+                <form id="formulario-comentario" action="guardar_comentario.php" method="post">
 
-                    <!-- for indica a que input quiero ponerle el nombre -->
-                    <!-- <label for="nombre" class="texto-claro texto-mediano">Nombre:</label> -->
-                    <!-- Defino el tipo de entrada de texto, un identificador y  un nombre para el valor-->
-                    <input type="text" id="nombre" name="nombre" value={{ nombre }} disabled class="oculto">
-
-                    <!-- <label for="email" class="texto-claro texto-mediano">Email:</label> -->
-                    <input type="email" id="email" name="email" value={{ email }} disabled class="oculto">
-
-                    <input type="text" id="id_actividad" name="id_actividad" value={{ id_actividad }} disabled class="oculto">
+                    <input type="hidden" id="nombre" name="nombre" value={{ nombre }}>
+                    <input type="hidden" id="email" name="email" value={{ email }}>
+                    <input type="hidden" id="id_actividad" name="id_actividad" value={{ id_actividad }}>
 
                     <label for="texto-comentario" class="texto-claro texto-mediano">Comentario:</label>
                     <textarea name="texto-comentario" id="texto-comentario" rows="4" required></textarea>
