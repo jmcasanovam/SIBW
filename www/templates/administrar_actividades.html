@@ -1,0 +1,46 @@
+{% extends "padre.html" %}
+
+{% block titulo %}
+{{ parent() }} : Administración de actividades
+{% endblock %}
+
+{% block importaciones %}
+{{ parent() }}
+{% endblock %}
+
+{% block contenido %}
+    {% if sesion_iniciada and (rol == "gestor" or rol == "superusuario") %}
+        <div>
+            <h2>Administración de actividades</h2>
+            <div>
+                <a href="crear_actividad.php">Crear actividad</a>
+            </div>
+            <div>
+                <h3>Lista de actividades</h3>
+                <ul>
+                    {% for actividad in actividades %}
+                        <li>
+                            <p>Nombre: {{ actividad["nombre"] }}</p>
+                            <p>Contenido: {{ actividad["contenido"] }}</p>
+                            <p>Fecha: {{ actividad["fecha"] }}</p>
+                            <p>Id: {{ actividad["id"] }}</p>
+                            <a href="borrar_actividad.php?id={{ actividad["id"] }}">
+                                <img src="img/papelera.jpg" alt="Icono de papelera" class="foto_perfil">
+                            </a>
+                            <a href="editar_actividad.php?id={{ actividad["id"] }}">
+                                <img src="img/edicion_comentario.jpg" alt="Icono para modificar el comentario" class="foto_perfil">
+                            </a>
+                        </li>
+                    {% endfor %}
+                </ul>
+            </div>
+            
+        </div>
+    {% else %}
+        <div>
+            <h2>Administración de actividades</h2>
+            <p>Debes iniciar sesión como gestor para ver esta página</p>
+            <a href="login.php">Iniciar sesión</a>
+        </div>
+    {% endif %}
+{% endblock %}

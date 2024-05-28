@@ -121,7 +121,7 @@ class Database {
         $actividades = [];
         if ($result->num_rows > 0) {
             while ($row = $result->fetch_assoc()) {
-                array_push($actividades, array('id' => $row['id'], 'nombre' => $row['nombre'], 'imagen1' => $row['imagen1']));
+                array_push($actividades, array('id' => $row['id'], 'nombre' => $row['nombre'], 'fecha' => date('d-m-Y', strtotime($row['fecha'])), 'precio' => $row['precio'], 'contenido' => $row['contenido'], 'imagen1' => $row['imagen1'], 'pie_imagen1' => $row['pie_imagen1'], 'imagen2' => $row['imagen2'], 'pie_imagen2' => $row['pie_imagen2'],'dificultad' => $row['dificultad'], 'edad_minima' => $row['edad_minima'], 'imprimir' => $row['imprimir'], 'duracion' => $row['duracion'], 'materiales' => json_decode($row['materiales']), 'enlaces' => json_decode($row['enlaces'])));
             }
         }
 
