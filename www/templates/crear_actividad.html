@@ -1,0 +1,77 @@
+{% extends "padre.html" %}
+
+{% block titulo %}
+{{ parent() }} : Crear actividad
+{% endblock %}
+
+{% block importaciones %}
+{{ parent() }}
+{% endblock %}
+
+{% block contenido %}
+{% if sesion_iniciada and (rol == "gestor" or rol == "superusuario") %}
+<div>
+    <h2>Crear actividad</h2>
+    {% if errores %}
+    <div>
+        <ul>
+            {% for error in errores %}
+            <li>{{ error }}</li>
+            {% endfor %}
+        </ul>
+    </div>
+    {% endif %}
+    <form action="crear_actividad.php" method="post" enctype="multipart/form-data">
+        <label for="nombre">Nombre:</label>
+        <input type="text" name="nombre" id="nombre" required>
+
+        <label for="fecha">Fecha:</label>
+        <input type="date" name="fecha" id="fecha" required>
+
+        <label for="precio">Precio:</label>
+        <input type="number" name="precio" id="precio" step="0.01" required>
+
+        <label for="contenido">Contenido:</label>
+        <textarea name="contenido" id="contenido" required></textarea>
+
+        <label for="imagen1">Imagen 1:</label>
+        <input type="file" name="imagen1" id="imagen1" required>
+
+        <label for="pie_imagen1">Pie de imagen 1:</label>
+        <input type="text" name="pie_imagen1" id="pie_imagen1" required>
+
+        <label for="imagen2">Imagen 2:</label>
+        <input type="file" name="imagen2" id="imagen2">
+
+        <label for="pie_imagen2">Pie de imagen 2:</label>
+        <input type="text" name="pie_imagen2" id="pie_imagen2">
+
+        <label for="materiales">Materiales:</label>
+        <input type="text" name="materiales" id="materiales" required>
+
+        <label for="enlaces">Enlaces:</label>
+        <input type="text" name="enlaces" id="enlaces" required>
+
+        <label for="dificultad">Dificultad:</label>
+        <input type="text" name="dificultad" id="dificultad" required>
+
+        <label for="duracion">Duración:</label>
+        <input type="text" name="duracion" id="duracion" required>
+
+        <label for="edad_minima">Edad mínima:</label>
+        <input type="number" name="edad_minima" id="edad_minima" required>
+
+        <label for="imprimir">Imprimir:</label>
+        <input type="text" name="imprimir" id="imprimir">
+
+        <input type="submit" value="Crear actividad">
+    </form>
+</div>
+{% else %}
+<div>
+    <h2>Crear actividad</h2>
+    <p>Debes iniciar sesión como gestor para ver esta página</p>
+    <a href="login.php">Iniciar sesión</a>
+</div>
+{% endif %}
+{% endblock %}

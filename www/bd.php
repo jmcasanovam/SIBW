@@ -28,7 +28,7 @@ class Database {
         return $evento;
     }
 
-    public function createActividad($actividad){
+    public function crearActividad($actividad){
         $nombre = $actividad['nombre'];
         $fecha = $actividad['fecha'];
 
@@ -345,6 +345,19 @@ class Database {
 
         $statement->execute();
         if ($statement->affected_rows > 0) {// Si se ha actualizado algún registro
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    function borrarActividad($id){
+        $query = "DELETE FROM actividad WHERE id = ?";
+        $statement = $this->mysqli->prepare($query);
+        $statement->bind_param("i", $id);
+
+        $statement->execute();
+        if ($statement->affected_rows > 0) {// Si se ha borrado algún registro
             return true;
         } else {
             return false;
