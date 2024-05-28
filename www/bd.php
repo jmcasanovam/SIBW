@@ -67,7 +67,7 @@ class Database {
         $actividad = [];
         if ($result->num_rows > 0) {
             $row = $result->fetch_assoc();
-            $actividad = array('nombre' => $row['nombre'], 'fecha' => date('d-m-Y', strtotime($row['fecha'])), 'precio' => $row['precio'], 'contenido' => $row['contenido'], 'imagen1' => $row['imagen1'], 'pie_imagen1' => $row['pie_imagen1'], 'imagen2' => $row['imagen2'], 'pie_imagen2' => $row['pie_imagen2'], 'materiales' => json_decode($row['materiales']), 'dificultad' => $row['dificultad'], 'duracion' => $row['duracion'], 'edad_minima' => $row['edad_minima'], 'enlaces' => json_decode($row['enlaces']), 'imprimir' => $row['imprimir']);
+            $actividad = array('nombre' => $row['nombre'], 'fecha' => date('d-m-Y', strtotime($row['fecha'])), 'precio' => $row['precio'], 'contenido' => $row['contenido'], 'imagen1' => $row['imagen1'], 'pie_imagen1' => $row['pie_imagen1'], 'imagen2' => $row['imagen2'], 'pie_imagen2' => $row['pie_imagen2'], 'materiales' => json_decode($row['materiales']), 'dificultad' => $row['dificultad'], 'duracion' => $row['duracion'], 'edad_minima' => $row['edad_minima'], 'enlaces' => json_decode($row['enlaces']), 'imprimir' => $row['imprimir'], 'id' => $row['id']);
         }else{
             $actividad = array('nombre' => 'No encontrado', 'fecha' => 'No encontrado', 'precio' => 'No encontrado', 'contenido' => 'No encontrado', 'imagen1' => 'No encontrado', 'pie_imagen1' => 'No encontrado', 'imagen2' => 'No encontrado', 'pie_imagen2' => 'No encontrado', 'materiales' => 'No encontrado', 'dificultad' => 'No encontrado', 'duracion' => 'No encontrado', 'edad_minima' => 'No encontrado', 'enlaces' => 'No encontrado', 'imprimir' => 'No encontrado');
         }
@@ -367,33 +367,26 @@ class Database {
     function actualizarActividad($actividad){
     $id = $actividad['id'];
     $nombre = $actividad['nombre'];
-    $fecha = $actividad['fecha'];
-
-    // Comprobamos si la fecha está en el formato correcto (YYYY-MM-DD)
-    if (!preg_match('/^\d{4}-\d{2}-\d{2}$/', $fecha)) {
-        $fecha = date('Y-m-d', strtotime($fecha));
-    }
-
-    $precio = $actividad['precio'];
     $contenido = $actividad['contenido'];
-    $imagen1 = $actividad['imagen1'];
     $pie_imagen1 = $actividad['pie_imagen1'];
-    $imagen2 = $actividad['imagen2'];
     $pie_imagen2 = $actividad['pie_imagen2'];
-    $materiales = json_encode(explode(',', $actividad['materiales']));
-    $dificultad = $actividad['dificultad'];
     $duracion = $actividad['duracion'];
     $edad_minima = $actividad['edad_minima'];
-    $enlaces = json_encode(explode(',', $actividad['enlaces']));
     $imprimir = $actividad['imprimir'];
+    $dificultad = $actividad['dificultad'];
 
-    $query = "UPDATE actividad SET nombre = ?, fecha = ?, precio = ?, contenido = ?, imagen1 = ?, pie_imagen1 = ?, imagen2 = ?, pie_imagen2 = ?, materiales = ?, dificultad = ?, duracion = ?, edad_minima = ?, enlaces = ?, imprimir = ? WHERE id = ?";
+    $precio = $actividad['precio'];
+
+   
+    // $query = "UPDATE actividad SET nombre = ?, contenido = ?, precio = ? WHERE id = ?";
+    $query = "UPDATE actividad SET nombre = ?, contenido = ?, precio = ?, pie_imagen1 = ?, pie_imagen2 = ?, duracion = ?, edad_minima = ?, imprimir = ?, dificultad = ? WHERE id = ?";
     $statement = $this->mysqli->prepare($query);
 
     
 
     // Bind de parámetros
-    $statement->bind_param("ssssssssssssssi", $nombre, $fecha, $precio, $contenido, $imagen1, $pie_imagen1, $imagen2, $pie_imagen2, $materiales, $dificultad, $duracion, $edad_minima, $enlaces, $imprimir, $id);
+    // $statement->bind_param("sssssi", $nombre, $contenido,$precio, $pie_imagen1, $pie_imagen2, $id);
+    $statement->bind_param("sssssssssi", $nombre, $contenido, $precio, $pie_imagen1, $pie_imagen2, $duracion, $edad_minima, $imprimir, $dificultad, $id);
 
     // Ejecución de la consulta
     $statement->execute();
@@ -406,6 +399,9 @@ class Database {
         // No se actualizó ningún registro
         return false;
     }
+
+
+    
 }
 
 
