@@ -1,18 +1,21 @@
-<html>
-  <head>
-    <title>Login de usuario</title>
-  </head>
-  
-  <body>
-  
-    <form action="login.php" method="post">
-      Email: <input type="text" name="email" /><br>
-      Password: <input type="password" name="password" /><br>
-      <input type="submit" value="Loguearse" />
-    </form>
-    
-    <a href="signup.php">Crear una cuenta</a>
+{% extends "padre.html" %}
 
-  </body>
+{% block titulo %}
+{{ parent() }} : Login
+{% endblock %}
 
-</html>
+{% block importaciones %}
+{{ parent() }}
+{% endblock %}
+
+{% block contenido %}
+
+<form action="login.php" method="post">
+  Email: <input type="text" name="email" /><br>
+  Password: <input type="password" name="password" /><br>
+  <input type="submit" value="Loguearse" />
+</form>
+
+<a href="signup.php">Crear una cuenta</a>
+
+{% endblock %}

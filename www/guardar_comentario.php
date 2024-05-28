@@ -10,7 +10,7 @@
         $id_actividad = $_POST['id_actividad'];
 
         if($dataBase->insertarComentario($nombre, $email, $texto, $id_actividad)){
-            header("Location: ./actividad.php?id=".$id_actividad);
+            header("Location: ./actividad.php?ev=".$id_actividad);
             exit();
         }else{
             echo "Error al insertar el comentario";

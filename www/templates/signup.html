@@ -1,18 +1,21 @@
-<html>
+{% extends "padre.html" %}
 
-<head>
-    <title>Creación de cuenta de usuario</title>
-</head>
+{% block titulo %}
+{{ parent() }} : Crear una cuenta
+{% endblock %}
 
-<body>
-    <p>Creación de cuenta de usuario</p>
-    <form action="signup.php" method="post">
-        Nombre: <input type="text" name="nombre" /><br>
-        Email: <input type="text" name="email" /><br>
-        Contraseña: <input type="password" name="password" /><br>
-        <input type="submit" value="Loguearse" />
-    </form>
+{% block importaciones %}
+{{ parent() }}
+{% endblock %}
 
-</body>
+{% block contenido %}
+<p>Creación de cuenta de usuario</p>
+<form action="signup.php" method="post">
+    Nombre: <input type="text" name="nombre" /><br>
+    Email: <input type="text" name="email" /><br>
+    Contraseña: <input type="password" name="password" /><br>
+    <input type="submit" value="Loguearse" />
+</form>
 
-</html>
+<a href="login.php">Iniciar sesión</a>
+{% endblock %}

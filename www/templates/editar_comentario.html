@@ -9,7 +9,7 @@
 {% endblock %}
 
 {% block contenido %}
-    {% if sesion_iniciada and rol != "registrado" %}
+    {% if sesion_iniciada and rol != "registrado" and rol != "gestor" %}
         <div>
             <h2>Editar comentario</h2>
             <form action="actualizar_comentario.php" method="post">
