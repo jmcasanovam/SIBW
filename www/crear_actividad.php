@@ -29,8 +29,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $file_name1 = $_FILES['imagen1']['name'];
             $file_size1 = $_FILES['imagen1']['size'];
             $file_tmp1 = $_FILES['imagen1']['tmp_name'];
+            $file_type1 = $_FILES['imagen1']['type'];
             $file_ext_array1 = explode('.', $_FILES['imagen1']['name']);
             $file_ext1 = strtolower(end($file_ext_array1));
+
             $extensions = ["jpeg", "jpg", "png"];
 
             if (in_array($file_ext1, $extensions) === false) {
