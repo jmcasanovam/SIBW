@@ -374,19 +374,21 @@ class Database {
     $edad_minima = $actividad['edad_minima'];
     $imprimir = $actividad['imprimir'];
     $dificultad = $actividad['dificultad'];
+    $imagen1 = $actividad['imagen1'];
+    $imagen2 = $actividad['imagen2'];
 
     $precio = $actividad['precio'];
 
    
     // $query = "UPDATE actividad SET nombre = ?, contenido = ?, precio = ? WHERE id = ?";
-    $query = "UPDATE actividad SET nombre = ?, contenido = ?, precio = ?, pie_imagen1 = ?, pie_imagen2 = ?, duracion = ?, edad_minima = ?, imprimir = ?, dificultad = ? WHERE id = ?";
+    $query = "UPDATE actividad SET nombre = ?, contenido = ?, precio = ?, pie_imagen1 = ?, pie_imagen2 = ?, duracion = ?, edad_minima = ?, imprimir = ?, dificultad = ?, imagen1 = ?, imagen2 = ? WHERE id = ?";
     $statement = $this->mysqli->prepare($query);
 
     
 
     // Bind de parámetros
     // $statement->bind_param("sssssi", $nombre, $contenido,$precio, $pie_imagen1, $pie_imagen2, $id);
-    $statement->bind_param("sssssssssi", $nombre, $contenido, $precio, $pie_imagen1, $pie_imagen2, $duracion, $edad_minima, $imprimir, $dificultad, $id);
+    $statement->bind_param("sssssssssssi", $nombre, $contenido, $precio, $pie_imagen1, $pie_imagen2, $duracion, $edad_minima, $imprimir, $dificultad, $imagen1, $imagen2, $id);
 
     // Ejecución de la consulta
     $statement->execute();

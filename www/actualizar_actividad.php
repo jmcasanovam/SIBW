@@ -19,50 +19,33 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $imprimir = $_POST['imprimir'];
         $dificultad = $_POST['dificultad'];
 
-        // // Manejo de la subida de imágenes
-        // // $imagen1 = $_POST['imagen1'];
-        // // if (isset($_FILES['imagen1_nueva']) && $_FILES['imagen1_nueva']['error'] === UPLOAD_ERR_OK) {
-        // //     $imagen1_nueva_name = $_FILES['imagen1_nueva']['name'];
-        // //     $imagen1_nueva_tmp = $_FILES['imagen1_nueva']['tmp_name'];
-        // //     if (move_uploaded_file($imagen1_nueva_tmp, "imagenesSubidas/" . $imagen1_nueva_name)) {
-        // //         $imagen1 = "imagenesSubidas/" . $imagen1_nueva_name;
-        // //     } else {
-        // //         echo "Error al subir la nueva imagen 1";
-        // //         exit();
-        // //     }
-        // // }
+        // Manejo de la subida de imágenes
+        $imagen1 = $_POST['imagen1'];
+        if (isset($_FILES['imagen1_nueva']) && $_FILES['imagen1_nueva']['error'] === UPLOAD_ERR_OK) {
+            $imagen1_nueva_name = $_FILES['imagen1_nueva']['name'];
+            $imagen1_nueva_tmp = $_FILES['imagen1_nueva']['tmp_name'];
+            if (move_uploaded_file($imagen1_nueva_tmp, "imagenesSubidas/" . $imagen1_nueva_name)) {
+                $imagen1 = "imagenesSubidas/" . $imagen1_nueva_name;
+            } else {
+                echo "Error al subir la nueva imagen 1";
+                exit();
+            }
+        }
 
-        // // $imagen2 = $_POST['imagen2'];
-        // // if (isset($_FILES['imagen2_nueva']) && $_FILES['imagen2_nueva']['error'] === UPLOAD_ERR_OK) {
-        // //     $imagen2_nueva_name = $_FILES['imagen2_nueva']['name'];
-        // //     $imagen2_nueva_tmp = $_FILES['imagen2_nueva']['tmp_name'];
-        // //     if (move_uploaded_file($imagen2_nueva_tmp, "imagenesSubidas/" . $imagen2_nueva_name)) {
-        // //         $imagen2 = "imagenesSubidas/" . $imagen2_nueva_name;
-        // //     } else {
-        // //         echo "Error al subir la nueva imagen 2";
-        // //         exit();
-        // //     }
-        // // }
+        $imagen2 = $_POST['imagen2'];
+        if (isset($_FILES['imagen2_nueva']) && $_FILES['imagen2_nueva']['error'] === UPLOAD_ERR_OK) {
+            $imagen2_nueva_name = $_FILES['imagen2_nueva']['name'];
+            $imagen2_nueva_tmp = $_FILES['imagen2_nueva']['tmp_name'];
+            if (move_uploaded_file($imagen2_nueva_tmp, "imagenesSubidas/" . $imagen2_nueva_name)) {
+                $imagen2 = "imagenesSubidas/" . $imagen2_nueva_name;
+            } else {
+                echo "Error al subir la nueva imagen 2";
+                exit();
+            }
+        }
 
         // // Crear instancia de la base de datos
         
-        // $actividad = array(
-        //     'id' => $id,
-        //     'nombre' => $nombre,
-        //     'contenido' => $contenido,
-        //     'fecha' => $fecha,
-        //     'precio' => $precio,
-        //     'imagen1' => $imagen1,
-        //     'pie_imagen1' => $pie_imagen1,
-        //     'imagen2' => $imagen2,
-        //     'pie_imagen2' => $pie_imagen2,
-        //     'materiales' => $materiales,
-        //     'duracion' => $duracion,
-        //     'edad_minima' => $edad_minima,
-        //     'enlaces' => $enlaces,
-        //     'imprimir' => $imprimir,
-        //     'dificultad' => $dificultad
-        // );
 
         $actividad = array(
             'id' => $id,
@@ -74,7 +57,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             'duracion' => $duracion,
             'edad_minima' => $edad_minima,
             'imprimir' => $imprimir,
-            'dificultad' => $dificultad
+            'dificultad' => $dificultad,
+            'imagen1' => $imagen1,
+            'imagen2' => $imagen2,
         ); 
 
         if($dataBase->actualizarActividad($actividad)){
