@@ -1,0 +1,81 @@
+{% extends "padre.html" %}
+
+{% block titulo %}
+{{ parent() }} : Editar actividad
+{% endblock %}
+
+{% block importaciones %}
+{{ parent() }}
+{% endblock %}
+
+{% block contenido %}
+    {% if sesion_iniciada and (rol == "gestor" or rol == "superusuario") %}
+        <div class="columna">
+            <h2>Editar actividad</h2>
+            <form action="actualizar_actividad.php" method="post">
+                <input type="hidden" name="id" value="{{ actividad["id"] }}">
+                <label for="nombre">Nombre:</label>
+                <input type="text" name="nombre" id="nombre" value="{{ actividad["nombre"] }}">
+                <br>
+
+                <label for="contenido">Contenido:</label>
+                <textarea name="contenido" id="contenido" cols="60" rows="10">{{ actividad["contenido"] }}</textarea>
+                <br>
+
+                <label for="fecha">Fecha:</label>
+                <input type="text" name="fecha" id="fecha" value="{{ actividad["fecha"] }}">
+                <br>
+
+                <label for="precio">Precio:</label>
+                <input type="text" name="precio" id="precio" value="{{ actividad["precio"] }}">
+                <br>
+
+                <label for="imagen1">Imagen1</label>
+                <img src="{{ actividad["imagen1"] }}" alt="Imagen1" class="foto">
+                <input type="file" name="imagen1_nueva" id="imagen1_nueva">
+                <br>
+
+                <label for="pie_imagen1">Pie de imagen1:</label>
+                <input type="text" name="pie_imagen1" id="pie_imagen1" value="{{ actividad["pie_imagen1"] }}">
+                <br>
+
+                <label for="imagen2">Imagen2</label>
+                <img src="{{ actividad["imagen2"] }}" alt="Imagen2" class="foto">
+                <input type="file" name="imagen2" id="imagen2">
+                <br>
+
+                <label for="pie_imagen2">Pie de imagen2:</label>
+                <input type="text" name="pie_imagen2" id="pie_imagen2" value="{{ actividad["pie_imagen2"] }}">
+                <br>
+
+                <label for="materiales">Materiales:</label>
+                <textarea name="materiales" id="materiales" cols="30" rows="10">{{ actividad["materiales"] }}</textarea>
+                <br>
+
+                <label for="duracion">Duración:</label>
+                <input type="text" name="duracion" id="duracion" value="{{ actividad["duracion"] }}">
+                <br>
+
+                <label for="edad_minima">Edad minima:</label>
+                <input type="number" name="edad_minima" id="edad_minima" value="{{ actividad["edad_minima"] }}">
+                <br>
+
+                <label for="enlaces">Enlaces:</label>
+                <textarea name="enlaces" id="enlaces" cols="30" rows="10">{{ actividad["enlaces"] }}</textarea>
+                <br>
+
+                <label for="imprimir">Enlace para imprimir</label>
+                <input type="text" name="imprimir" id="imprimir" value="{{ actividad["imprimir"] }}">
+
+                <input type="submit" value="Actualizar actividad">
+                <br>
+            </form>
+        </div>
+    {% else %}
+        <div>
+            <h2>Editar actividad</h2>
+            <p>Debes iniciar sesión como gestor para ver esta página</p>
+            <a href="login.php">Iniciar sesión</a>
+        </div>
+    {% endif %}
+{% endblock %}
