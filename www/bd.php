@@ -364,6 +364,51 @@ class Database {
         }
     }
 
+    function actualizarActividad($actividad){
+    $id = $actividad['id'];
+    $nombre = $actividad['nombre'];
+    $fecha = $actividad['fecha'];
+
+    // Comprobamos si la fecha está en el formato correcto (YYYY-MM-DD)
+    if (!preg_match('/^\d{4}-\d{2}-\d{2}$/', $fecha)) {
+        $fecha = date('Y-m-d', strtotime($fecha));
+    }
+
+    $precio = $actividad['precio'];
+    $contenido = $actividad['contenido'];
+    $imagen1 = $actividad['imagen1'];
+    $pie_imagen1 = $actividad['pie_imagen1'];
+    $imagen2 = $actividad['imagen2'];
+    $pie_imagen2 = $actividad['pie_imagen2'];
+    $materiales = json_encode(explode(',', $actividad['materiales']));
+    $dificultad = $actividad['dificultad'];
+    $duracion = $actividad['duracion'];
+    $edad_minima = $actividad['edad_minima'];
+    $enlaces = json_encode(explode(',', $actividad['enlaces']));
+    $imprimir = $actividad['imprimir'];
+
+    $query = "UPDATE actividad SET nombre = ?, fecha = ?, precio = ?, contenido = ?, imagen1 = ?, pie_imagen1 = ?, imagen2 = ?, pie_imagen2 = ?, materiales = ?, dificultad = ?, duracion = ?, edad_minima = ?, enlaces = ?, imprimir = ? WHERE id = ?";
+    $statement = $this->mysqli->prepare($query);
+
+    
+
+    // Bind de parámetros
+    $statement->bind_param("ssssssssssssssi", $nombre, $fecha, $precio, $contenido, $imagen1, $pie_imagen1, $imagen2, $pie_imagen2, $materiales, $dificultad, $duracion, $edad_minima, $enlaces, $imprimir, $id);
+
+    // Ejecución de la consulta
+    $statement->execute();
+
+    // Verificación de filas afectadas
+    if ($statement->affected_rows > 0) {
+        // Se actualizó al menos un registro
+        return true;
+    } else {
+        // No se actualizó ningún registro
+        return false;
+    }
+}
+
+
     
 
     // Destructor que cierra la conexión

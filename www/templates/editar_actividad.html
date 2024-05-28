@@ -12,7 +12,7 @@
     {% if sesion_iniciada and (rol == "gestor" or rol == "superusuario") %}
         <div class="columna">
             <h2>Editar actividad</h2>
-            <form action="actualizar_actividad.php" method="post">
+            <form action="actualizar_actividad.php" method="post" enctype="multipart/form-data">
                 <input type="hidden" name="id" value="{{ actividad["id"] }}">
                 <label for="nombre">Nombre:</label>
                 <input type="text" name="nombre" id="nombre" value="{{ actividad["nombre"] }}">
@@ -32,6 +32,7 @@
 
                 <label for="imagen1">Imagen1</label>
                 <img src="{{ actividad["imagen1"] }}" alt="Imagen1" class="foto">
+                <input type="hidden" name="imagen1" id="imagen1" value="{{ actividad["imagen1"] }}">
                 <input type="file" name="imagen1_nueva" id="imagen1_nueva">
                 <br>
 
@@ -41,7 +42,8 @@
 
                 <label for="imagen2">Imagen2</label>
                 <img src="{{ actividad["imagen2"] }}" alt="Imagen2" class="foto">
-                <input type="file" name="imagen2" id="imagen2">
+                <input type="hidden" name="imagen2" id="imagen2" value="{{ actividad["imagen2"] }}">
+                <input type="file" name="imagen2_nueva" id="imagen2_nueva">
                 <br>
 
                 <label for="pie_imagen2">Pie de imagen2:</label>
@@ -58,6 +60,10 @@
 
                 <label for="edad_minima">Edad minima:</label>
                 <input type="number" name="edad_minima" id="edad_minima" value="{{ actividad["edad_minima"] }}">
+                <br>
+
+                <label for="dificultad">Dificultad:</label>
+                <input type="text" name="dificultad" id="dificultad" value="{{ actividad["dificultad"] }}">
                 <br>
 
                 <label for="enlaces">Enlaces:</label>
