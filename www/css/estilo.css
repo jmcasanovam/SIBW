@@ -11,6 +11,27 @@
     background-image: url(../img/mountain.jpg);
 }
 
+.search-container {
+    max-width: 600px;
+    padding: 20px;
+}
+
+.search-box {
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.results-container {
+    margin-top: 2%;
+    border-radius: 1%;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+}
+
+
 .columna {
     display: flex;
     flex-direction: column;

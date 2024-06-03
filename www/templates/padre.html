@@ -7,6 +7,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     {% block importaciones %}
     <link rel="stylesheet" href="css/estilo.css" type="text/css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="./js/general.js" defer></script>
+    
     {% endblock %}
 
 
@@ -58,6 +61,10 @@
                 <a href="login.php">Iniciar sesión</a>
                 {% endif %}
             </nav>
+        </div>
+        <div class="search-container">
+            <input type="text" id="search-box" class="search-box" placeholder="Buscar actividades...">
+            <div id="results-container"></div>
         </div>
 
     </header>
