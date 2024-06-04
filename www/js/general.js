@@ -15,7 +15,7 @@ $(document).ready(function () {
                     console.log(resultados);
                     $('#results-container').empty();
                     resultados.forEach(function (item) {
-                        const div = $('<div id="results-container"></div>');
+                        const div = $('<div class="listado"></div>');
                         div.text(item.nombre);
                         div.data('id', item.id);
                         div.on('click', function () {
