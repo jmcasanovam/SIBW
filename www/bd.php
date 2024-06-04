@@ -57,8 +57,13 @@ class Database {
         $statement->execute();
     }
 
-    public function getActividad($id){
-        $query = "SELECT * FROM actividad WHERE id = ?";
+    public function getActividad($id, $rol){
+        if($rol == 'superusuario' || $rol == 'gestor'){
+            $query = "SELECT * FROM actividad WHERE id = ?";
+        }else{
+            $query = "SELECT * FROM actividad WHERE id = ? AND estado = 1";
+        }
+        // $query = "SELECT * FROM actividad WHERE id = ?";
         $statement = $this->mysqli->prepare($query);
         $statement->bind_param("i", $id);
         $statement->execute();
@@ -67,7 +72,7 @@ class Database {
         $actividad = [];
         if ($result->num_rows > 0) {
             $row = $result->fetch_assoc();
-            $actividad = array('nombre' => $row['nombre'], 'fecha' => date('d-m-Y', strtotime($row['fecha'])), 'precio' => $row['precio'], 'contenido' => $row['contenido'], 'imagen1' => $row['imagen1'], 'pie_imagen1' => $row['pie_imagen1'], 'imagen2' => $row['imagen2'], 'pie_imagen2' => $row['pie_imagen2'], 'materiales' => json_decode($row['materiales']), 'dificultad' => $row['dificultad'], 'duracion' => $row['duracion'], 'edad_minima' => $row['edad_minima'], 'enlaces' => json_decode($row['enlaces']), 'imprimir' => $row['imprimir'], 'id' => $row['id']);
+            $actividad = array('nombre' => $row['nombre'], 'fecha' => date('d-m-Y', strtotime($row['fecha'])), 'precio' => $row['precio'], 'contenido' => $row['contenido'], 'imagen1' => $row['imagen1'], 'pie_imagen1' => $row['pie_imagen1'], 'imagen2' => $row['imagen2'], 'pie_imagen2' => $row['pie_imagen2'], 'materiales' => json_decode($row['materiales']), 'dificultad' => $row['dificultad'], 'duracion' => $row['duracion'], 'edad_minima' => $row['edad_minima'], 'enlaces' => json_decode($row['enlaces']), 'imprimir' => $row['imprimir'], 'id' => $row['id'], 'estado' => $row['estado']);
         }else{
             $actividad = array('nombre' => 'No encontrado', 'fecha' => 'No encontrado', 'precio' => 'No encontrado', 'contenido' => 'No encontrado', 'imagen1' => 'No encontrado', 'pie_imagen1' => 'No encontrado', 'imagen2' => 'No encontrado', 'pie_imagen2' => 'No encontrado', 'materiales' => 'No encontrado', 'dificultad' => 'No encontrado', 'duracion' => 'No encontrado', 'edad_minima' => 'No encontrado', 'enlaces' => 'No encontrado', 'imprimir' => 'No encontrado');
         }
@@ -114,8 +119,13 @@ class Database {
         return $comentarios;
     }
 
-    public function getActividades(){
-        $query = "SELECT * FROM actividad";
+    public function getActividades($rol){
+        if($rol == 'superusuario' || $rol == 'gestor'){
+            $query = "SELECT * FROM actividad";
+        }else{
+            $query = "SELECT * FROM actividad WHERE estado = 1";
+        }
+        // $query = "SELECT * FROM actividad";
         $result = $this->mysqli->query($query);
 
         $actividades = [];
@@ -376,19 +386,20 @@ class Database {
         $dificultad = $actividad['dificultad'];
         $imagen1 = $actividad['imagen1'];
         $imagen2 = $actividad['imagen2'];
-
+        $estado = $actividad['estado'];
         $precio = $actividad['precio'];
 
     
         // $query = "UPDATE actividad SET nombre = ?, contenido = ?, precio = ? WHERE id = ?";
-        $query = "UPDATE actividad SET nombre = ?, contenido = ?, precio = ?, pie_imagen1 = ?, pie_imagen2 = ?, duracion = ?, edad_minima = ?, imprimir = ?, dificultad = ?, imagen1 = ?, imagen2 = ? WHERE id = ?";
+        // $query = "UPDATE actividad SET nombre = ?, contenido = ?, precio = ?, pie_imagen1 = ?, pie_imagen2 = ?, duracion = ?, edad_minima = ?, imprimir = ?, dificultad = ?, imagen1 = ?, imagen2 = ? WHERE id = ?";
+        $query = "UPDATE actividad SET nombre = ?, contenido = ?, precio = ?, pie_imagen1 = ?, pie_imagen2 = ?, duracion = ?, edad_minima = ?, imprimir = ?, dificultad = ?, imagen1 = ?, imagen2 = ?, estado = ? WHERE id = ?";
         $statement = $this->mysqli->prepare($query);
 
         
 
         // Bind de parámetros
         // $statement->bind_param("sssssi", $nombre, $contenido,$precio, $pie_imagen1, $pie_imagen2, $id);
-        $statement->bind_param("sssssssssssi", $nombre, $contenido, $precio, $pie_imagen1, $pie_imagen2, $duracion, $edad_minima, $imprimir, $dificultad, $imagen1, $imagen2, $id);
+        $statement->bind_param("sssssssssssii", $nombre, $contenido, $precio, $pie_imagen1, $pie_imagen2, $duracion, $edad_minima, $imprimir, $dificultad, $imagen1, $imagen2, $estado, $id);
 
         // Ejecución de la consulta
         $statement->execute();
@@ -407,7 +418,25 @@ class Database {
     }
 
     function getActividadesBusqueda($texto){
-        $query = "SELECT id, nombre FROM actividad WHERE nombre LIKE ?";
+        $query = "SELECT id, nombre FROM actividad WHERE nombre LIKE ? AND estado = 1";
+        $statement = $this->mysqli->prepare($query);
+        $texto = "%".$texto."%";// Añadir % para que busque en cualquier parte del nombre
+        $statement->bind_param("s", $texto);
+        $statement->execute();
+        $result = $statement->get_result();
+
+        $actividades = [];
+        if ($result->num_rows > 0) {
+            while ($row = $result->fetch_assoc()) {
+                array_push($actividades, array('id' => $row['id'], 'nombre' => $row['nombre']));
+            }
+        }
+
+        return $actividades;
+    }
+
+    function getActividadesBusquedaGestor($texto){
+        $query = "SELECT id, nombre FROM actividad WHERE nombre LIKE ? ";
         $statement = $this->mysqli->prepare($query);
         $texto = "%".$texto."%";// Añadir % para que busque en cualquier parte del nombre
         $statement->bind_param("s", $texto);

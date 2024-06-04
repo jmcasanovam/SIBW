@@ -11,9 +11,9 @@
     if(isset($_SESSION['email'])){
         $sesion_iniciada = true;
     }
-    
+    $rol = "";
     $dataBase = new Database();
-    $actividades = $dataBase->getActividades();
+    $actividades = $dataBase->getActividades($rol);
 
     echo $twig->render('principal.html', ['actividades' => $actividades, 'sesion_iniciada' => $sesion_iniciada]);
     

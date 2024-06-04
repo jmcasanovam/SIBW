@@ -10,7 +10,7 @@
         $sesion_iniciada = true;
         
         $dataBase = new Database();
-        $actividades = $dataBase->getActividades();
+        $actividades = $dataBase->getActividades($_SESSION['rol']);
         echo $twig->render('administrar_actividades.html', ["actividades" => $actividades, 'sesion_iniciada' => $sesion_iniciada, 'rol' => $_SESSION['rol']]);
     }
 ?>

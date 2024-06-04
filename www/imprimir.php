@@ -8,7 +8,8 @@
 
     $dataBase = new Database();
     $id = getIdActividad();
-    $actividad = $dataBase->getActividad($id);
+    $rol = "";
+    $actividad = $dataBase->getActividad($id, $rol);
 
     echo $twig->render('imprimir.html', ["actividad" => $actividad]);
     

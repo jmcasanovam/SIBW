@@ -11,7 +11,8 @@
 
     if (isset($_SESSION['email']) && ($_SESSION['rol'] == 'superusuario' || $_SESSION['rol'] == 'gestor') && isset($_GET['id'])){
         $id = $_GET['id'];
-        $actividad = $dataBase->getActividad($id);
+        $rol = $_SESSION['rol'];
+        $actividad = $dataBase->getActividad($id, $rol);
 
         $materiales = implode(", ", $actividad['materiales']);
         $actividad['materiales'] = $materiales;

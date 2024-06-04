@@ -18,6 +18,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $edad_minima = $_POST['edad_minima'];
         $imprimir = $_POST['imprimir'];
         $dificultad = $_POST['dificultad'];
+        $estado = $_POST['publicada'];
 
         // Manejo de la subida de imágenes
         $imagen1 = $_POST['imagen1'];
@@ -60,6 +61,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             'dificultad' => $dificultad,
             'imagen1' => $imagen1,
             'imagen2' => $imagen2,
+            'estado' => $estado,
         ); 
 
         if($dataBase->actualizarActividad($actividad)){

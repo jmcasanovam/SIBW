@@ -18,6 +18,12 @@
                 <input type="text" name="nombre" id="nombre" value="{{ actividad["nombre"] }}">
                 <br>
 
+                <label for="publicada">Publicada:</label>
+                <select name="publicada" id="publicada">
+                    <option value="1" {% if actividad["estado"] == 1 %} selected {% endif %}>Publicada</option>
+                    <option value="0" {% if actividad["estado"] == 0 %} selected {% endif %}>No publicada</option>
+                </select></select>
+
                 <label for="contenido">Contenido:</label>
                 <textarea name="contenido" id="contenido" cols="60" rows="10">{{ actividad["contenido"] }}</textarea>
                 <br>

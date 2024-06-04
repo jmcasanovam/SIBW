@@ -10,17 +10,19 @@
   $sesion_iniciada = false;
   $email = "";
   $nombre = "";
+  $rol = "";
 
   session_start();
   if(isset($_SESSION['email'])){
       $sesion_iniciada = true;
       $nombre = $_SESSION['nombre'];
       $email = $_SESSION['email'];
+      $rol = $_SESSION['rol'];
   }
     
   $dataBase = new Database();
   $id = getIdActividad();
-  $actividad = $dataBase->getActividad($id);
+  $actividad = $dataBase->getActividad($id, $rol);
   $comentarios = $dataBase->getComentarios();
   
 

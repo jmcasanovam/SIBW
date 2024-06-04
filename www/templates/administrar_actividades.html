@@ -6,6 +6,8 @@
 
 {% block importaciones %}
 {{ parent() }}
+<script src="./js/administrar_actividades.js" defer></script>
+
 {% endblock %}
 
 {% block contenido %}
@@ -17,6 +19,11 @@
             </div>
             <div>
                 <h3>Lista de actividades</h3>
+                
+                <div class="search-container">
+                    <input type="text" id="search-box2" class="search-box" placeholder="Buscar actividades publicadas y no publicadas">
+                    <div id="results-container2"></div>
+                </div>
                 <ul>
                     {% for actividad in actividades %}
                         <li>
