@@ -365,46 +365,64 @@ class Database {
     }
 
     function actualizarActividad($actividad){
-    $id = $actividad['id'];
-    $nombre = $actividad['nombre'];
-    $contenido = $actividad['contenido'];
-    $pie_imagen1 = $actividad['pie_imagen1'];
-    $pie_imagen2 = $actividad['pie_imagen2'];
-    $duracion = $actividad['duracion'];
-    $edad_minima = $actividad['edad_minima'];
-    $imprimir = $actividad['imprimir'];
-    $dificultad = $actividad['dificultad'];
-    $imagen1 = $actividad['imagen1'];
-    $imagen2 = $actividad['imagen2'];
+        $id = $actividad['id'];
+        $nombre = $actividad['nombre'];
+        $contenido = $actividad['contenido'];
+        $pie_imagen1 = $actividad['pie_imagen1'];
+        $pie_imagen2 = $actividad['pie_imagen2'];
+        $duracion = $actividad['duracion'];
+        $edad_minima = $actividad['edad_minima'];
+        $imprimir = $actividad['imprimir'];
+        $dificultad = $actividad['dificultad'];
+        $imagen1 = $actividad['imagen1'];
+        $imagen2 = $actividad['imagen2'];
 
-    $precio = $actividad['precio'];
-
-   
-    // $query = "UPDATE actividad SET nombre = ?, contenido = ?, precio = ? WHERE id = ?";
-    $query = "UPDATE actividad SET nombre = ?, contenido = ?, precio = ?, pie_imagen1 = ?, pie_imagen2 = ?, duracion = ?, edad_minima = ?, imprimir = ?, dificultad = ?, imagen1 = ?, imagen2 = ? WHERE id = ?";
-    $statement = $this->mysqli->prepare($query);
+        $precio = $actividad['precio'];
 
     
+        // $query = "UPDATE actividad SET nombre = ?, contenido = ?, precio = ? WHERE id = ?";
+        $query = "UPDATE actividad SET nombre = ?, contenido = ?, precio = ?, pie_imagen1 = ?, pie_imagen2 = ?, duracion = ?, edad_minima = ?, imprimir = ?, dificultad = ?, imagen1 = ?, imagen2 = ? WHERE id = ?";
+        $statement = $this->mysqli->prepare($query);
 
-    // Bind de parámetros
-    // $statement->bind_param("sssssi", $nombre, $contenido,$precio, $pie_imagen1, $pie_imagen2, $id);
-    $statement->bind_param("sssssssssssi", $nombre, $contenido, $precio, $pie_imagen1, $pie_imagen2, $duracion, $edad_minima, $imprimir, $dificultad, $imagen1, $imagen2, $id);
+        
 
-    // Ejecución de la consulta
-    $statement->execute();
+        // Bind de parámetros
+        // $statement->bind_param("sssssi", $nombre, $contenido,$precio, $pie_imagen1, $pie_imagen2, $id);
+        $statement->bind_param("sssssssssssi", $nombre, $contenido, $precio, $pie_imagen1, $pie_imagen2, $duracion, $edad_minima, $imprimir, $dificultad, $imagen1, $imagen2, $id);
 
-    // Verificación de filas afectadas
-    if ($statement->affected_rows > 0) {
-        // Se actualizó al menos un registro
-        return true;
-    } else {
-        // No se actualizó ningún registro
-        return false;
+        // Ejecución de la consulta
+        $statement->execute();
+
+        // Verificación de filas afectadas
+        if ($statement->affected_rows > 0) {
+            // Se actualizó al menos un registro
+            return true;
+        } else {
+            // No se actualizó ningún registro
+            return false;
+        }
+
+
+    
     }
 
+    function getActividadesBusqueda($texto){
+        $query = "SELECT id, nombre FROM actividad WHERE nombre LIKE ?";
+        $statement = $this->mysqli->prepare($query);
+        $texto = "%".$texto."%";// Añadir % para que busque en cualquier parte del nombre
+        $statement->bind_param("s", $texto);
+        $statement->execute();
+        $result = $statement->get_result();
 
-    
-}
+        $actividades = [];
+        if ($result->num_rows > 0) {
+            while ($row = $result->fetch_assoc()) {
+                array_push($actividades, array('id' => $row['id'], 'nombre' => $row['nombre']));
+            }
+        }
+
+        return $actividades;
+    }
 
 
     

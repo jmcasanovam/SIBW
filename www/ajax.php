@@ -1,13 +1,22 @@
 
 <?php
+include 'bd.php';
+
+$dataBase = new Database();
+
+$search = $_GET['query'] ?? '';
+
+// Obtener las actividades de la base de datos
+$actividades = $dataBase->getActividadesBusqueda($search);
+
 // Actividades de ejemplo
-$actividades = array(
-    array('id' => 1, 'nombre' => 'Actividad 1'),
-    array('id' => 2, 'nombre' => 'Actividad 2'),
-    array('id' => 3, 'nombre' => 'Actividad 3'),
-    array('id' => 4, 'nombre' => 'Actividad 4'),
-    array('id' => 5, 'nombre' => 'Actividad 5')
-);
+// $actividades = array(
+//     array('id' => 1, 'nombre' => 'Actividad 1'),
+//     array('id' => 2, 'nombre' => 'Actividad 2'),
+//     array('id' => 3, 'nombre' => 'Actividad 3'),
+//     array('id' => 4, 'nombre' => 'Actividad 4'),
+//     array('id' => 5, 'nombre' => 'Actividad 5')
+// );
 
 
 sleep(1);
